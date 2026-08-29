@@ -165,7 +165,7 @@ window.PORTFOLIO_PROJECTS = [
     pageBackground: {
       src: 'assets/images/project-face-recognition-page-background.png',
       position: 'right center',
-      overlay: 0.76
+      overlay: 0.56
     },
     summary: 'A solo-developed Python computer-vision project that uses machine learning to locate five key facial landmarks: both eyes, the nose and both corners of the mouth.',
     overview: 'Facial Recognition AI is a machine-learning project focused on locating key facial features within portrait images. It compares alternative models for predicting five facial landmarks and converts each image into structured coordinate data that can support face alignment and further image-processing tasks.',
