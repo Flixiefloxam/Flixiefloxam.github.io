@@ -31,6 +31,22 @@
   const year = document.querySelector('[data-current-year]');
   if (year) year.textContent = new Date().getFullYear();
 
+  const projects = window.PORTFOLIO_PROJECTS || [];
+  if (projects.length) {
+    const projectById = new Map(projects.map((project) => [project.id, project]));
+
+    document.querySelectorAll('[data-project-id]').forEach((element) => {
+      const project = projectById.get(element.dataset.projectId);
+      if (!project?.wip || element.querySelector('.project-status-ribbon')) return;
+
+      const ribbon = document.createElement('span');
+      ribbon.className = 'project-status-ribbon';
+      ribbon.textContent = 'WIP';
+      ribbon.title = 'Work in progress';
+      element.appendChild(ribbon);
+    });
+  }
+
   const revealItems = document.querySelectorAll('[data-reveal]');
   if ('IntersectionObserver' in window && revealItems.length) {
     const observer = new IntersectionObserver((entries) => {

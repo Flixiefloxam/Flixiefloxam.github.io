@@ -28,6 +28,9 @@
   const imageCredit = project.imageCredit
     ? `<p class="project-image-credit">${project.imageCredit}</p>`
     : '';
+  const statusRibbon = project.wip
+    ? '<span class="project-status-ribbon" title="Work in progress">WIP</span>'
+    : '';
 
   const links = (project.links || [])
     .map((link) => `<a class="button button--secondary" href="${link.url}" ${link.url.startsWith('http') ? 'target="_blank" rel="noreferrer"' : ''}>${link.label}</a>`)
@@ -108,7 +111,10 @@
         </div>
       </div>
       <div class="project-detail__media" data-reveal>
-        <img class="project-detail__hero${project.heroDisplay === 'contain' ? ' project-detail__hero--contain' : ''}" src="${project.image}" alt="Project artwork for ${project.title}" referrerpolicy="no-referrer" ${imageFallback}>
+        <div class="project-cover">
+          <img class="project-detail__hero${project.heroDisplay === 'contain' ? ' project-detail__hero--contain' : ''}" src="${project.image}" alt="Project artwork for ${project.title}" referrerpolicy="no-referrer" ${imageFallback}>
+          ${statusRibbon}
+        </div>
         ${imageCredit}
       </div>
     </header>
