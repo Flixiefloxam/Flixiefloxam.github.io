@@ -74,6 +74,12 @@ window.PORTFOLIO_PROJECTS = [
     year: 'In development',
     image: 'assets/images/project-neon-swarm-cover.png',
     imageCredit: 'Neon Swarm gameplay screenshot',
+    trailer: {
+      title: 'Neon Swarm — Gameplay Showcase (WIP)',
+      youtubeId: 'UTQKf_4jEdk',
+      sectionTitle: 'Gameplay trailer',
+      description: 'See the current work-in-progress build of Neon Swarm in action.'
+    },
     pageBackground: {
       src: 'assets/images/project-neon-swarm-page-tile.png',
       position: 'left top',
