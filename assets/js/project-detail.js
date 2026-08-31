@@ -41,8 +41,8 @@
       <section class="project-trailer section-shell section-shell--bordered" data-reveal>
         <div class="project-trailer__heading">
           <p class="section-kicker">Watch</p>
-          <h2>Official trailer</h2>
-          <p>See the game in action in the official announcement trailer.</p>
+          <h2>${project.trailer.sectionTitle || 'Official trailer'}</h2>
+          <p>${project.trailer.description || 'See the game in action in the official announcement trailer.'}</p>
         </div>
         <div class="project-trailer__media">
           <div class="video-embed">
