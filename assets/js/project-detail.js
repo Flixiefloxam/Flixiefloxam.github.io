@@ -33,7 +33,7 @@
     : '';
 
   const links = (project.links || [])
-    .map((link) => `<a class="button button--secondary" href="${link.url}" ${link.url.startsWith('http') ? 'target="_blank" rel="noreferrer"' : ''}>${link.label}</a>`)
+    .map((link) => `<a class="button button--primary" href="${link.url}" ${link.url.startsWith('http') ? 'target="_blank" rel="noreferrer"' : ''}>${link.label}</a>`)
     .join('');
 
   const trailer = project.trailer?.youtubeId
