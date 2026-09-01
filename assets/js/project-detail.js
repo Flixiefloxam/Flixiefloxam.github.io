@@ -49,7 +49,7 @@
             <iframe
               src="https://www.youtube-nocookie.com/embed/${project.trailer.youtubeId}?rel=0&playsinline=1"
               data-autoplay-trailer
-              data-autoplay-src="https://www.youtube-nocookie.com/embed/${project.trailer.youtubeId}?rel=0&playsinline=1&autoplay=1&mute=1"
+              data-autoplay-src="https://www.youtube-nocookie.com/embed/${project.trailer.youtubeId}?rel=0&playsinline=1&autoplay=1"
               title="${project.trailer.title || `${project.title} trailer`}"
               loading="lazy"
               referrerpolicy="strict-origin-when-cross-origin"
