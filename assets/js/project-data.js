@@ -9,7 +9,7 @@ window.PORTFOLIO_PROJECTS = [
     focus: 'Gameplay Systems · Live-Service Development',
     year: '2024',
     image: 'https://images.ctfassets.net/z4mnmfs6j6sv/4h1LHXbkjEUbbGQlOaBVBi/f0c1cd339eadbcf42a7bb55231d78669/KoM_StandardEdition_KeyArt2.jpg',
-    imageFallback: 'assets/images/project-king-of-meat.svg',
+    imageFallback: '../assets/images/project-king-of-meat.svg',
     imageCredit: 'Official King of Meat standard-edition key art — Amazon Games / Glowmade',
     pageBackground: {
       src: 'https://images.ctfassets.net/5lpapfxq15sk/6yPOUzjMRJD3feXiuNOlm4/c5d8687753fe866e7c224a1f7d88cb99/KOM_SGF_2025_Screens_Combat_F_1080_CT-000018970.jpg',
@@ -72,7 +72,7 @@ window.PORTFOLIO_PROJECTS = [
     technologies: ['Godot', 'C#'],
     focus: 'Gameplay Systems · Enemy Swarms · Combat Architecture',
     year: 'In development',
-    image: 'assets/images/project-neon-swarm-cover.png',
+    image: '../assets/images/project-neon-swarm-cover.png',
     imageCredit: 'Neon Swarm gameplay screenshot',
     trailer: {
       title: 'Neon Swarm — Gameplay Showcase (WIP)',
@@ -81,7 +81,7 @@ window.PORTFOLIO_PROJECTS = [
       description: 'See the current work-in-progress build of Neon Swarm in action.'
     },
     pageBackground: {
-      src: 'assets/images/project-neon-swarm-page-tile.png',
+      src: '../assets/images/project-neon-swarm-page-tile.png',
       position: 'left top',
       size: '128px 128px',
       repeat: 'repeat',
@@ -109,10 +109,10 @@ window.PORTFOLIO_PROJECTS = [
     technologies: ['Godot', 'C#', 'Python'],
     focus: 'Procedural Generation · AI Systems · Gameplay Integration',
     year: '2026',
-    image: 'assets/images/project-ai-level-platformer-cover.png',
+    image: '../assets/images/project-ai-level-platformer-cover.png',
     imageCredit: 'AI-Generated Level Platformer project image',
     pageBackground: {
-      src: 'assets/images/project-ai-level-platformer-page-background.png',
+      src: '../assets/images/project-ai-level-platformer-page-background.png',
       position: 'center center',
       overlay: 0.74
     },
@@ -137,10 +137,10 @@ window.PORTFOLIO_PROJECTS = [
     technologies: ['Python'],
     focus: 'Genetic Algorithms · Pathfinding · Procedural Generation',
     year: '2025',
-    image: 'assets/images/genetic-maze-learning-progress-v2.gif',
+    image: '../assets/images/genetic-maze-learning-progress-v2.gif',
     imageCredit: 'Genetic Algorithm Maze learning-progress animation',
     pageBackground: {
-      src: 'assets/images/project-genetic-maze-cover.png',
+      src: '../assets/images/project-genetic-maze-cover.png',
       position: 'center center',
       size: 'cover',
       repeat: 'no-repeat',
@@ -167,10 +167,10 @@ window.PORTFOLIO_PROJECTS = [
     technologies: ['Python'],
     focus: 'Computer Vision · Machine Learning · Facial Landmark Detection',
     year: '2025',
-    image: 'assets/images/project-face-alignment-cover.png',
+    image: '../assets/images/project-face-alignment-cover.png',
     imageCredit: 'Facial Recognition AI project results',
     pageBackground: {
-      src: 'assets/images/project-face-recognition-page-background.png',
+      src: '../assets/images/project-face-recognition-page-background.png',
       position: 'right center',
       overlay: 0.56
     },

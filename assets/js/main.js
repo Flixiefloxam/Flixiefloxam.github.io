@@ -1,3 +1,9 @@
+// Keep directory index URLs clean when an explicit index.html URL is opened.
+if (window.location.pathname.endsWith('/index.html')) {
+  const cleanPath = window.location.pathname.slice(0, -'index.html'.length);
+  window.history.replaceState(null, '', `${cleanPath}${window.location.search}${window.location.hash}`);
+}
+
 (() => {
   // Replace these two placeholder URLs with Alex's exact profile addresses.
   const socialUrls = {
