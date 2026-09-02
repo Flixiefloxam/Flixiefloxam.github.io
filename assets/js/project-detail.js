@@ -100,7 +100,7 @@
   root.innerHTML = `
     <header class="project-detail__header">
       <div class="project-detail__intro" data-reveal>
-        <a class="back-link" href="../projects/">← All projects</a>
+        <a class="back-link" href="../#projects">← All projects</a>
         <p class="eyebrow">${project.categoryLabel}${project.year ? ` <span aria-hidden="true">/</span> ${project.year}` : ''}</p>
         <h1>${project.title}</h1>
         <p class="project-detail__lede">${project.summary}</p>

@@ -80,11 +80,4 @@ if (window.location.pathname.endsWith('/index.html')) {
     updateScrollIndicator();
   }
 
-  const hero = document.querySelector('[data-parallax]');
-  if (hero && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    window.addEventListener('scroll', () => {
-      const offset = Math.min(window.scrollY * 0.16, 80);
-      hero.style.setProperty('--parallax-y', `${offset}px`);
-    }, { passive: true });
-  }
 })();

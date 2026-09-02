@@ -14,7 +14,6 @@
   --radius: 24px;
   --header-height: 76px;
   --page-gutter: 20px;
-  --parallax-y: 0px;
 }
 
 * { box-sizing: border-box; }
@@ -172,30 +171,9 @@ main { overflow: hidden; }
   display: grid;
   align-items: end;
   isolation: isolate;
-  background: #0a0e14;
+  background: transparent;
 }
 
-.hero::before {
-  content: "";
-  position: absolute;
-  inset: -90px 0 -90px;
-  z-index: -3;
-  background-image: url('https://images.ctfassets.net/z4mnmfs6j6sv/5gfRbwmhhKftKniTqW216l/c3e1dd0a56fa8452276734190f2e6cc0/KOM_SGF_2025_Screens_Combat_B_1080_CT-000018970.jpg');
-  background-position: 72% calc(50% + var(--parallax-y));
-  background-size: cover;
-  background-repeat: no-repeat;
-  filter: saturate(1);
-}
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: -2;
-  background:
-    linear-gradient(90deg, rgba(5,7,12,.94) 0%, rgba(5,7,12,.64) 48%, rgba(5,7,12,.22) 100%),
-    linear-gradient(0deg, var(--bg) 0%, transparent 42%),
-    radial-gradient(circle at 72% 35%, transparent 0, rgba(8,10,15,.25) 50%, rgba(8,10,15,.8) 100%);
-}
 
 .hero__noise {
   position: absolute;
@@ -319,20 +297,52 @@ main { overflow: hidden; }
 }
 .intro-strip p:last-child { margin: 0; color: var(--muted); font-size: 1.08rem; }
 
-.projects-page--themed {
-  background-color: #080a0f;
-  background-image:
-    linear-gradient(rgba(8,10,15,.88), rgba(8,10,15,.88)),
-    url("https://images.ctfassets.net/5lpapfxq15sk/2YlFc3fLD7WxkIKqhWdfcm/f9be84fcb40bd7795d654e33412e2970/KOM_SGF_2025_Screens_Combat_E_1080_CT-000018970.jpg");
-  background-position: center, center center;
-  background-size: auto, cover;
-  background-repeat: repeat, no-repeat;
-  background-attachment: scroll, fixed;
+/* Home and project list share one fixed background so the transition is continuous. */
+.home-projects-page {
+  position: relative;
+  isolation: isolate;
+  background: #080a0f;
 }
-.projects-page--themed .page-hero,
-.projects-page--themed .section-heading {
+.home-projects-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    url("https://images.ctfassets.net/5lpapfxq15sk/2YlFc3fLD7WxkIKqhWdfcm/f9be84fcb40bd7795d654e33412e2970/KOM_SGF_2025_Screens_Combat_E_1080_CT-000018970.jpg") center center / cover no-repeat;
+}
+
+/* The opening hero uses its own directional dimming: darkest behind the
+   left-aligned copy, fading toward the image on the right. */
+.home-projects-page .hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(5,7,12,.82) 0%, rgba(5,7,12,.58) 42%, rgba(5,7,12,.20) 78%, rgba(5,7,12,.08) 100%),
+    linear-gradient(180deg, rgba(8,10,15,.08) 0%, rgba(8,10,15,.18) 76%, rgba(8,10,15,.32) 100%);
+  -webkit-backdrop-filter: saturate(.82) brightness(.90);
+  backdrop-filter: saturate(.82) brightness(.90);
+}
+
+/* Everything below the hero keeps the stronger, even dimming used by the
+   former Projects page while the shared image itself remains fixed. */
+.home-projects-content {
+  background: rgba(8,10,15,.88);
+}
+.home-projects-page .site-footer {
+  background: #080a0f;
+}
+.home-projects-page .page-hero,
+.home-projects-page .section-heading {
   position: relative;
   text-shadow: 0 2px 20px rgba(0,0,0,.72);
+}
+.home-projects-page .hero__content {
+  padding-bottom: clamp(2rem, 4vh, 3.5rem);
 }
 
 .page-hero {
@@ -342,12 +352,24 @@ main { overflow: hidden; }
   border-bottom: 1px solid var(--line);
 }
 .page-hero h1 { font-size: clamp(3.4rem, 8vw, 7.5rem); }
+.page-hero--embedded {
+  padding: 2.75rem 0 3rem;
+  scroll-margin-top: var(--header-height);
+  border-top: 1px solid var(--line);
+}
+.page-hero--embedded h1 {
+  font-size: clamp(2rem, 9vw, 5rem);
+  white-space: nowrap;
+}
 .page-hero > h1 + p { margin: 1.75rem 0 0; max-width: 650px; color: var(--muted); font-size: 1.12rem; }
 
 .project-category {
   width: min(calc(100% - var(--page-gutter) - var(--page-gutter)), var(--max));
   margin: 0 auto;
   padding: 6.5rem 0 0;
+}
+#professional-games {
+  padding-top: 2.75rem;
 }
 .project-category:last-of-type { padding-bottom: 7rem; }
 .section-heading {
@@ -516,7 +538,11 @@ main { overflow: hidden; }
     --header-height: 68px;
     --page-gutter: clamp(18px, 3.5vw, 32px);
   }
-  .projects-page--themed { background-attachment: scroll; }
+  .home-projects-page .hero::before {
+    background:
+      linear-gradient(90deg, rgba(5,7,12,.84) 0%, rgba(5,7,12,.66) 58%, rgba(5,7,12,.24) 88%, rgba(5,7,12,.12) 100%),
+      linear-gradient(180deg, rgba(8,10,15,.08) 0%, rgba(8,10,15,.20) 76%, rgba(8,10,15,.34) 100%);
+  }
   .project-detail--themed { background-attachment: scroll; }
   .menu-button { display: block; }
   .site-nav {
@@ -540,7 +566,6 @@ main { overflow: hidden; }
   .site-nav__socials { margin: .35rem 0 0; padding: .65rem .35rem .15rem; border-top: 1px solid var(--line); border-left: 0; }
   .site-nav .social-link { width: 42px; height: 42px; padding: 0; }
   .hero__scroll { display: none; }
-  .hero::after { background: linear-gradient(90deg, rgba(5,7,12,.94), rgba(5,7,12,.52)), linear-gradient(0deg, var(--bg), transparent 50%); }
   .intro-strip,
   .section-heading,
   .about-layout,
@@ -562,6 +587,7 @@ main { overflow: hidden; }
 }
 
 @media (max-width: 520px) {
+  .page-hero--embedded h1 { font-size: clamp(1.9rem, 9vw, 2.9rem); }
   .site-header__inner,
   .hero__content,
   .intro-strip,
