@@ -7,6 +7,8 @@ window.PORTFOLIO_PROJECTS = [
     role: 'Programming Intern',
     technologies: ['C++'],
     focus: 'Gameplay Systems · Live-Service Development',
+    studio: 'Glowmade',
+    publisher: 'Amazon Games',
     year: '2024',
     image: 'https://images.ctfassets.net/z4mnmfs6j6sv/4h1LHXbkjEUbbGQlOaBVBi/f0c1cd339eadbcf42a7bb55231d78669/KoM_StandardEdition_KeyArt2.jpg',
     imageFallback: '../assets/images/project-king-of-meat.svg',

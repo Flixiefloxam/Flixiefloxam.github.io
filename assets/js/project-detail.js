@@ -36,29 +36,32 @@
     .map((link) => `<a class="button button--primary" href="${link.url}" ${link.url.startsWith('http') ? 'target="_blank" rel="noreferrer"' : ''}>${link.label}</a>`)
     .join('');
 
-  const trailer = project.trailer?.youtubeId
+  const hasTrailer = Boolean(project.trailer?.youtubeId);
+  const trailerLabel = project.trailer?.sectionTitle || 'Official trailer';
+  const productionMeta = [
+    project.studio ? `<div><span>Studio</span><strong>${project.studio}</strong></div>` : '',
+    project.publisher ? `<div><span>Publisher</span><strong>${project.publisher}</strong></div>` : ''
+  ].join('');
+  const trailerMedia = hasTrailer
     ? `
-      <section class="project-trailer section-shell section-shell--bordered" data-reveal>
-        <div class="project-trailer__heading">
-          <p class="section-kicker">Watch</p>
-          <h2>${project.trailer.sectionTitle || 'Official trailer'}</h2>
-          <p>${project.trailer.description || 'See the game in action in the official announcement trailer.'}</p>
+      <div class="project-detail__video-frame">
+        <div class="video-embed">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/${project.trailer.youtubeId}?rel=0&playsinline=1"
+            data-autoplay-trailer
+            data-autoplay-src="https://www.youtube-nocookie.com/embed/${project.trailer.youtubeId}?rel=0&playsinline=1&autoplay=1"
+            title="${project.trailer.title || `${project.title} trailer`}"
+            loading="eager"
+            referrerpolicy="strict-origin-when-cross-origin"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
         </div>
-        <div class="project-trailer__media">
-          <div class="video-embed">
-            <iframe
-              src="https://www.youtube-nocookie.com/embed/${project.trailer.youtubeId}?rel=0&playsinline=1"
-              data-autoplay-trailer
-              data-autoplay-src="https://www.youtube-nocookie.com/embed/${project.trailer.youtubeId}?rel=0&playsinline=1&autoplay=1"
-              title="${project.trailer.title || `${project.title} trailer`}"
-              loading="lazy"
-              referrerpolicy="strict-origin-when-cross-origin"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-              allowfullscreen></iframe>
-          </div>
-          <a class="project-trailer__link" href="https://www.youtube.com/watch?v=${project.trailer.youtubeId}" target="_blank" rel="noreferrer noopener">Watch on YouTube ↗</a>
-        </div>
-      </section>`
+        ${statusRibbon}
+      </div>
+      <div class="project-detail__video-caption">
+        <span>${trailerLabel}</span>
+        <a href="https://www.youtube.com/watch?v=${project.trailer.youtubeId}" target="_blank" rel="noreferrer noopener">Watch on YouTube ↗</a>
+      </div>`
     : '';
 
   const gallery = project.gallery?.length
@@ -97,7 +100,7 @@
   const featureKicker = isProfessionalProject ? 'Contribution' : 'Highlights';
   const featureHeading = isProfessionalProject ? 'What I worked on' : 'Key Features';
 
-  root.innerHTML = `
+  const standardHeader = `
     <header class="project-detail__header">
       <div class="project-detail__intro" data-reveal>
         <a class="back-link" href="../#projects">← All projects</a>
@@ -108,6 +111,7 @@
           <div><span>Role</span><strong>${project.role || '—'}</strong></div>
           <div><span>Technologies</span><strong>${(project.technologies || project.tech || []).join(' · ') || '—'}</strong></div>
           <div><span>Focus</span><strong>${project.focus || '—'}</strong></div>
+          ${productionMeta}
         </div>
       </div>
       <div class="project-detail__media" data-reveal>
@@ -117,7 +121,32 @@
         </div>
         ${imageCredit}
       </div>
-    </header>
+    </header>`;
+
+  const videoHeader = `
+    <header class="project-detail__header project-detail__header--video">
+      <a class="back-link project-detail__back" href="../#projects" data-reveal>← All projects</a>
+
+      <div class="project-detail__intro project-detail__intro--video" data-reveal>
+        <p class="eyebrow">${project.categoryLabel}${project.year ? ` <span aria-hidden="true">/</span> ${project.year}` : ''}</p>
+        <h1>${project.title}</h1>
+        <p class="project-detail__lede">${project.summary}</p>
+      </div>
+
+      <div class="project-detail__media project-detail__media--video" data-reveal>
+        ${trailerMedia}
+      </div>
+
+      <div class="project-detail__meta project-detail__meta--video" data-reveal>
+        <div><span>Role</span><strong>${project.role || '—'}</strong></div>
+        <div><span>Technologies</span><strong>${(project.technologies || project.tech || []).join(' · ') || '—'}</strong></div>
+        <div><span>Focus</span><strong>${project.focus || '—'}</strong></div>
+        ${productionMeta}
+      </div>
+    </header>`;
+
+  root.innerHTML = `
+    ${hasTrailer ? videoHeader : standardHeader}
 
     <section class="detail-grid${overviewVisual ? ' detail-grid--illustrated' : ''} section-shell">
       <div data-reveal>
@@ -140,8 +169,6 @@
         ${featureItems.map((item) => `<li>${item}</li>`).join('')}
       </ul>
     </section>
-
-    ${trailer}
 
     ${gallery}
 
