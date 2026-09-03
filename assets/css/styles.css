@@ -187,7 +187,7 @@ main { overflow: hidden; }
 .hero__content {
   width: min(calc(100% - var(--page-gutter) - var(--page-gutter)), var(--max));
   margin: 0 auto;
-  padding: calc(var(--header-height) + 5rem) 0 9vh;
+  padding: calc(var(--header-height) + 4rem) 0 11vh;
 }
 
 .eyebrow,
@@ -233,7 +233,53 @@ main { overflow: hidden; }
   font-size: clamp(1.05rem, 1.8vw, 1.3rem);
 }
 
-.button-row { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 2.2rem; }
+.hero-recommendation {
+  width: min(650px, 100%);
+  margin-top: 1.35rem;
+  padding: 1rem 1.15rem 1.05rem;
+  border-left: 2px solid var(--accent);
+  background: linear-gradient(90deg, rgba(10,14,22,.72), rgba(10,14,22,.22));
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+.hero-recommendation__quote {
+  margin: 0;
+  color: rgba(255,255,255,.86);
+  font-size: clamp(.88rem, 1.25vw, 1rem);
+  line-height: 1.55;
+}
+.hero-recommendation__meta {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1.25rem;
+  margin-top: .7rem;
+}
+.hero-recommendation__meta > div {
+  display: grid;
+  gap: .12rem;
+}
+.hero-recommendation__meta strong {
+  color: #fff;
+  font-size: .82rem;
+}
+.hero-recommendation__meta span {
+  color: var(--muted);
+  font-size: .72rem;
+  line-height: 1.4;
+}
+.hero-recommendation__meta a {
+  flex: 0 0 auto;
+  color: #d7dce7;
+  font-size: .72rem;
+  font-weight: 800;
+  line-height: 1.35;
+  text-decoration: none;
+  text-align: right;
+}
+.hero-recommendation__meta a:hover { color: var(--accent); }
+
+.button-row { display: flex; flex-wrap: wrap; gap: .85rem; margin-top: 1.55rem; }
 .button {
   display: inline-flex;
   align-items: center;
@@ -620,6 +666,13 @@ main { overflow: hidden; }
 
 /* Compact layout for foldables, tablets, and narrow browser windows. */
 @media (max-width: 1000px) {
+  .hero-recommendation__meta {
+    align-items: start;
+    flex-direction: column;
+    gap: .65rem;
+  }
+  .hero-recommendation__meta a { text-align: left; }
+
   :root {
     --header-height: 68px;
     --page-gutter: clamp(18px, 3.5vw, 32px);
@@ -698,6 +751,17 @@ main { overflow: hidden; }
 }
 
 @media (max-width: 520px) {
+  .hero-recommendation {
+    margin-top: 1.05rem;
+    padding: .85rem .9rem .9rem;
+  }
+  .hero-recommendation__quote {
+    font-size: .84rem;
+    line-height: 1.5;
+  }
+  .hero-recommendation__meta span,
+  .hero-recommendation__meta a { font-size: .68rem; }
+
   .page-hero--embedded h1 { font-size: clamp(1.9rem, 9vw, 2.9rem); }
   .site-header__inner,
   .hero__content,
