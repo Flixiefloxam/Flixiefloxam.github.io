@@ -568,7 +568,7 @@ main { overflow: hidden; }
   grid-template-rows: auto auto auto;
   gap: 2.25rem clamp(2.75rem, 6vw, 5.5rem);
   padding-top: 3.25rem;
-  padding-bottom: 4.5rem;
+  padding-bottom: 2.5rem;
   align-items: center;
 }
 .project-detail__header--video .project-detail__back {
@@ -622,26 +622,28 @@ main { overflow: hidden; }
 .project-detail__video-caption a:hover { color: var(--accent); }
 .project-detail__meta--video {
   grid-column: 1 / -1;
-  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
   gap: 0;
-  margin-top: .5rem;
-  padding: 1.35rem 0;
+  margin-top: 0;
+  padding: .8rem 0;
   border-top: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
 }
 .project-detail__meta--video div {
   display: block;
-  padding: 0 clamp(1.25rem, 3vw, 2.5rem);
+  padding: 0 clamp(.9rem, 2.2vw, 1.75rem);
 }
 .project-detail__meta--video div:first-child { padding-left: 0; }
 .project-detail__meta--video div + div { border-left: 1px solid var(--line); }
 .project-detail__meta--video span {
   display: block;
-  margin-bottom: .4rem;
+  margin-bottom: .22rem;
+  font-size: .68rem;
 }
 .project-detail__meta--video strong {
   display: block;
-  line-height: 1.45;
+  font-size: .86rem;
+  line-height: 1.35;
 }
 .section-shell { width: min(calc(100% - var(--page-gutter) - var(--page-gutter)), var(--max)); margin: 0 auto; padding: 6rem 0; }
 .section-shell--bordered { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
@@ -701,7 +703,7 @@ main { overflow: hidden; }
 .project-story__body p { margin: 0 0 1.05rem; }
 .project-story__body p:last-child { margin-bottom: 0; }
 .project-story--overview {
-  padding-top: 3.6rem;
+  padding-top: 2.6rem;
   padding-bottom: 3.6rem;
   align-items: center;
 }
@@ -725,11 +727,17 @@ main { overflow: hidden; }
 .project-story__visual--features {
   height: 230px;
 }
+.project-story--features .contribution-list li {
+  padding-top: .65rem;
+  padding-bottom: .65rem;
+  border-bottom: 0;
+  line-height: 1.5;
+}
 .project-story--features .contribution-list li:first-child {
-  padding-top: .55rem;
+  padding-top: .25rem;
 }
 .project-story--features .contribution-list li:last-child {
-  padding-bottom: .55rem;
+  padding-bottom: .25rem;
 }
 
 .project-story__visual {
@@ -788,7 +796,7 @@ main { overflow: hidden; }
   grid-template-areas:
     "heading body visual"
     "heading takeaway takeaway";
-  gap: 2rem clamp(2.5rem, 4.5vw, 4.75rem);
+  gap: 1.2rem clamp(2.5rem, 4.5vw, 4.75rem);
   align-items: start;
   padding-top: 4.25rem;
   padding-bottom: 4.25rem;
@@ -847,11 +855,6 @@ main { overflow: hidden; }
 }
 .project-reflection__takeaway {
   grid-area: takeaway;
-  padding: 1.35rem 1.55rem;
-  border-left: 2px solid var(--accent);
-  border-top: 1px solid rgba(255,255,255,.08);
-  border-bottom: 1px solid rgba(255,255,255,.08);
-  background: linear-gradient(90deg, rgba(79,140,255,.10), rgba(10,14,22,.34));
 }
 .project-reflection__takeaway p {
   margin: 0;
@@ -940,8 +943,9 @@ main { overflow: hidden; }
   .project-detail__header--video {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1.65rem;
     padding-top: 2.5rem;
+    padding-bottom: 2.25rem;
   }
   .project-detail__header--video .project-detail__back {
     order: 0;
@@ -998,14 +1002,14 @@ main { overflow: hidden; }
   .about-facts { grid-template-columns: 1fr; }
   .project-detail__header { padding: 3rem 0 4rem; }
   .project-detail__meta div { grid-template-columns: 1fr; gap: .25rem; }
-  .project-detail__header--video { padding-top: 2rem; padding-bottom: 3.25rem; }
+  .project-detail__header--video { padding-top: 2rem; padding-bottom: 2.25rem; }
   .project-detail__intro--video h1 { font-size: clamp(3rem, 16vw, 4.6rem); }
   .project-detail__meta--video {
     grid-template-columns: 1fr;
-    padding: .35rem 0;
+    padding: .2rem 0;
   }
   .project-detail__meta--video div {
-    padding: 1rem 0;
+    padding: .7rem 0;
   }
   .project-detail__meta--video div + div {
     border-left: 0;
@@ -1286,7 +1290,7 @@ main { overflow: hidden; }
       "heading heading"
       "body visual"
       "takeaway takeaway";
-    gap: 1.6rem 2.25rem;
+    gap: 1.2rem 2.25rem;
   }
   .project-reflection__visual { height: 260px; }
 
@@ -1341,15 +1345,11 @@ main { overflow: hidden; }
       "visual"
       "body"
       "takeaway";
-    gap: 1.35rem;
+    gap: 1.2rem;
     padding-top: 3.2rem;
     padding-bottom: 3.2rem;
   }
   .project-reflection__visual { height: 220px; }
-  .project-reflection__takeaway {
-    padding: 1.15rem 1.2rem;
-  }
-
   .section-shell--compact {
     padding-top: 3rem;
     padding-bottom: 3rem;
@@ -1365,7 +1365,7 @@ main { overflow: hidden; }
     height: 225px;
   }
   .project-story--overview {
-    padding-top: 3rem;
+    padding-top: 2.4rem;
     padding-bottom: 3rem;
   }
   .project-story--overview .project-story__visual--overview {
