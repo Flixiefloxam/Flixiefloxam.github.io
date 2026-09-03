@@ -66,7 +66,7 @@
 
   const gallery = project.gallery?.length
     ? `
-      <section class="project-gallery section-shell" data-reveal>
+      <section class="project-gallery${project.compactGallery ? ' project-gallery--compact' : ''} section-shell" data-reveal>
         <div class="project-gallery__heading">
           <p class="section-kicker">Gallery</p>
           <h2>Inside the game</h2>
@@ -99,6 +99,60 @@
     : (project.keyFeatures || project.contributions || []);
   const featureKicker = isProfessionalProject ? 'Contribution' : 'Highlights';
   const featureHeading = isProfessionalProject ? 'What I worked on' : 'Key Features';
+
+  const storySection = (section) => {
+    if (!section?.title || !(section.body || []).length) return '';
+
+    const visual = section.visual?.src
+      ? `
+        <figure class="${section.layout === 'reflection' ? 'project-reflection__visual' : 'project-story__visual'}">
+          <img src="${section.visual.src}" alt="${section.visual.alt || ''}" loading="lazy" referrerpolicy="no-referrer">
+          ${section.visual.caption ? `<figcaption>${section.visual.caption}</figcaption>` : ''}
+        </figure>`
+      : '';
+
+    if (section.layout === 'reflection') {
+      const mainParagraphs = section.body.slice(0, -1);
+      const takeaway = section.body[section.body.length - 1];
+
+      return `
+        <section class="project-reflection section-shell section-shell--bordered" data-reveal>
+          <div class="project-reflection__heading">
+            <p class="section-kicker">${section.kicker || 'Reflection'}</p>
+            <h2>${section.title}</h2>
+          </div>
+          <div class="project-reflection__body">
+            ${mainParagraphs.map((paragraph) => `<p>${paragraph}</p>`).join('')}
+          </div>
+          ${visual}
+          <div class="project-reflection__takeaway">
+            <p>${takeaway}</p>
+          </div>
+        </section>`;
+    }
+
+    return `
+      <section class="project-story${section.columns ? ' project-story--columns' : ''} section-shell section-shell--bordered" data-reveal>
+        <div class="project-story__heading">
+          <p class="section-kicker">${section.kicker || 'Perspective'}</p>
+          <h2>${section.title}</h2>
+        </div>
+        <div class="project-story__body">
+          ${(section.body || []).map((paragraph) => `<p>${paragraph}</p>`).join('')}
+        </div>
+        ${visual}
+      </section>`;
+  };
+
+  const storySections = project.storySections || [];
+  const storyBeforeFeatures = storySections
+    .filter((section) => section.position === 'before-features')
+    .map(storySection)
+    .join('');
+  const storyAfterFeatures = storySections
+    .filter((section) => section.position !== 'before-features')
+    .map(storySection)
+    .join('');
 
   const standardHeader = `
     <header class="project-detail__header">
@@ -148,6 +202,21 @@
   root.innerHTML = `
     ${hasTrailer ? videoHeader : standardHeader}
 
+    ${project.compactDetailSections ? `
+    <section class="project-story project-story--overview section-shell" data-reveal>
+      <div class="project-story__heading">
+        <p class="section-kicker">Overview</p>
+        <h2>About the project</h2>
+      </div>
+      <div class="project-story__body project-story__body--overview">
+        <p>${project.overview}</p>
+      </div>
+      ${project.sectionVisuals?.overview?.src ? `
+        <figure class="project-story__visual project-story__visual--overview">
+          <img src="${project.sectionVisuals.overview.src}" alt="${project.sectionVisuals.overview.alt || ''}" loading="lazy" referrerpolicy="no-referrer">
+          ${project.sectionVisuals.overview.caption ? `<figcaption>${project.sectionVisuals.overview.caption}</figcaption>` : ''}
+        </figure>` : ''}
+    </section>` : `
     <section class="detail-grid${overviewVisual ? ' detail-grid--illustrated' : ''} section-shell">
       <div data-reveal>
         <p class="section-kicker">Overview</p>
@@ -157,8 +226,25 @@
       <div class="prose" data-reveal>
         <p>${project.overview}</p>
       </div>
-    </section>
+    </section>`}
 
+    ${storyBeforeFeatures}
+
+    ${project.compactDetailSections ? `
+    <section class="project-story project-story--features section-shell section-shell--bordered" data-reveal>
+      <div class="project-story__heading">
+        <p class="section-kicker">${featureKicker}</p>
+        <h2>${featureHeading}</h2>
+      </div>
+      <ul class="contribution-list project-story__contributions">
+        ${featureItems.map((item) => `<li>${item}</li>`).join('')}
+      </ul>
+      ${project.sectionVisuals?.contribution?.src ? `
+        <figure class="project-story__visual project-story__visual--features">
+          <img src="${project.sectionVisuals.contribution.src}" alt="${project.sectionVisuals.contribution.alt || ''}" loading="lazy" referrerpolicy="no-referrer">
+          ${project.sectionVisuals.contribution.caption ? `<figcaption>${project.sectionVisuals.contribution.caption}</figcaption>` : ''}
+        </figure>` : ''}
+    </section>` : `
     <section class="detail-grid${contributionVisual ? ' detail-grid--illustrated' : ''} section-shell section-shell--bordered">
       <div data-reveal>
         <p class="section-kicker">${featureKicker}</p>
@@ -168,7 +254,9 @@
       <ul class="contribution-list" data-reveal>
         ${featureItems.map((item) => `<li>${item}</li>`).join('')}
       </ul>
-    </section>
+    </section>`}
+
+    ${storyAfterFeatures}
 
     ${gallery}
 

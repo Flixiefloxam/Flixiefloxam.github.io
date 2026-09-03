@@ -52,8 +52,41 @@ window.PORTFOLIO_PROJECTS = [
     },
     galleryCredit: 'Official promotional screenshots — Amazon Games / Glowmade',
     gallerySource: 'https://www.amazongamestudios.com/en-gb/news/articles/king-of-meat-out-now',
+    compactDetailSections: true,
+    compactGallery: true,
     summary: 'Credited programmer on the shipped title King of Meat. Developed gameplay systems, live-service level mutators, player upgrades, throwing mechanics and interactable systems within a large production codebase.',
     overview: 'During my 2024 programming internship at Glowmade, I contributed to King of Meat as a credited programmer. I worked within a large existing codebase and collaborated closely with designers and other gameplay programmers to develop and refine player-facing systems.',
+    storySections: [
+      {
+        position: 'before-features',
+        kicker: 'Motivation',
+        title: 'Why I wanted this experience',
+        body: [
+          'After my first placement at Glowmade, I was invited back for a second internship, where I joined the gameplay team working on King of Meat, developed by Glowmade and published by Amazon Games. I wanted to move beyond university and personal projects and learn how gameplay systems are created and delivered within a professional studio. I loved that I could spend an entire day wrestling with a gameplay problem and still be excited to pick it up again the following morning. It made me realise that gameplay programming was the kind of work that would never lose its appeal, and that I’d love to be part of it every day.'
+        ],
+        visual: {
+          src: 'https://images.ctfassets.net/z4mnmfs6j6sv/yDA9x8p5amjt05Ihr9TtA/dcde1b86114b84e53b4291007d22ac9a/KOM_Announce_Screenshots_Gameplay_02-1920x1080.jpg',
+          alt: 'King of Meat contenders fighting through a colourful dungeon',
+          caption: 'Creative co-op combat in King of Meat'
+        }
+      },
+      {
+        position: 'after-features',
+        kicker: 'Reflection',
+        title: 'What I learned',
+        layout: 'reflection',
+        body: [
+          'King of Meat was built in Glowmade’s proprietary engine, so I had to become productive without relying on an engine I already knew and learn how to navigate a large existing C++ codebase. I began with debugging tasks, but within my first week I had progressed to implementing complete gameplay features. My work went through code review, was tested with QA, refined in response to feedback and included in the released game.',
+          'Alongside programming, I learned how a professional studio plans and delivers work. I took part in daily stand-ups, managed features and bugs through Jira, used Perforce within a shared codebase and worked towards production milestones. This taught me to communicate progress and blockers clearly, collaborate with designers and other programmers, respond constructively to feedback, and recognise when to investigate independently and when asking for help would keep the work moving.',
+          'The most important lesson was that production code must do more than make a feature work. It has to integrate safely with existing systems, be clear enough for other programmers to maintain and be reliable enough to ship. Being invited back by Glowmade, seeing my features in the final release and receiving a programming credit on the Amazon Studios game King of Meat are achievements I am incredibly proud of.'
+        ],
+        visual: {
+          src: 'https://images.ctfassets.net/z4mnmfs6j6sv/42hi2TS8w8VvH02UKgBgIj/93d36d80f706fbace9efd4313fe49c75/KOM_Announce_Screenshots_Gameplay_07-1920x1080.jpg',
+          alt: 'King of Meat gameplay in a colourful dungeon environment',
+          caption: 'King of Meat gameplay in Glowmade’s shipped production title'
+        }
+      }
+    ],
     contributions: [
       'Developed and implemented a dispenser and throwing gameplay system.',
       'Developed level mutators for live-service events.',
