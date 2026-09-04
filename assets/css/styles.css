@@ -560,6 +560,26 @@ main { overflow: hidden; }
 .project-detail__meta span { color: var(--muted); font-size: .75rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
 .project-detail__meta strong { font-size: .92rem; }
 
+/* Compact opening treatment shared by non-video project pages.
+   Mirrors the tighter hierarchy established on King of Meat without
+   changing the larger media-led composition. */
+.project-detail__header--compact {
+  padding-top: 3.75rem;
+  padding-bottom: 3rem;
+  gap: clamp(2.5rem, 5vw, 4.5rem);
+}
+.project-detail__header--compact .back-link { margin-bottom: 2rem; }
+.project-detail__header--compact .project-detail__lede { margin-bottom: 0; }
+.project-detail__header--compact .project-detail__meta {
+  gap: .65rem;
+  margin-top: 1.75rem;
+  padding-top: 1.05rem;
+}
+.project-detail__header--compact .project-detail__meta div {
+  grid-template-columns: 105px 1fr;
+  gap: .75rem;
+}
+
 /* Video-first project hero
    Projects with trailers replace the static cover in the opening viewport with
    the video itself, then place the project metadata in a clean full-width band. */
@@ -740,6 +760,33 @@ main { overflow: hidden; }
   padding-bottom: .25rem;
 }
 
+/* Most personal projects do not need a decorative image beside every section.
+   Collapse the unused third column so the heading and content use the available
+   width instead of leaving a large empty area. */
+.project-story--no-visual {
+  grid-template-columns: minmax(190px,.46fr) minmax(0,1.54fr);
+  gap: clamp(2rem, 4.5vw, 4.25rem);
+  padding-top: 3.15rem;
+  padding-bottom: 3.15rem;
+}
+.project-story--no-visual .project-story__body,
+.project-story--no-visual .project-story__contributions {
+  max-width: 850px;
+}
+.project-story--features.project-story--no-visual .contribution-list li {
+  padding-left: 3.65rem;
+  padding-top: .58rem;
+  padding-bottom: .58rem;
+  font-size: .98rem;
+  line-height: 1.48;
+}
+.project-story--features.project-story--no-visual .contribution-list li:first-child {
+  padding-top: .15rem;
+}
+.project-story--features.project-story--no-visual .contribution-list li:last-child {
+  padding-bottom: .15rem;
+}
+
 .project-story__visual {
   position: relative;
   height: 250px;
@@ -864,6 +911,10 @@ main { overflow: hidden; }
 }
 
 .project-cta { display: flex; align-items: end; justify-content: space-between; gap: 3rem; }
+.project-cta--compact {
+  padding-top: 3.75rem;
+  padding-bottom: 3.75rem;
+}
 
 .site-footer { border-top: 1px solid var(--line); }
 .site-footer__inner { width: min(calc(100% - var(--page-gutter) - var(--page-gutter)), var(--max)); margin: 0 auto; padding: 2rem 0; display: flex; align-items: center; justify-content: space-between; gap: 2rem; color: var(--muted); font-size: .8rem; }
@@ -936,6 +987,14 @@ main { overflow: hidden; }
   .about-layout { padding-top: calc(var(--header-height) + 4rem); }
   .about-portrait { max-width: 560px; }
   .project-detail__header { gap: 3rem; }
+  .project-detail__header--compact {
+    gap: 2.25rem;
+    padding-top: 3rem;
+    padding-bottom: 2.75rem;
+  }
+  .project-detail__header--compact .project-detail__meta div {
+    grid-template-columns: 105px 1fr;
+  }
   .project-detail__intro { order: 2; }
   .project-detail__hero { order: 1; }
   .back-link { margin-bottom: 2rem; }
@@ -1001,7 +1060,21 @@ main { overflow: hidden; }
   .project-row__content { min-height: 0; padding: 2rem 1.4rem 2.4rem; }
   .about-facts { grid-template-columns: 1fr; }
   .project-detail__header { padding: 3rem 0 4rem; }
-  .project-detail__meta div { grid-template-columns: 1fr; gap: .25rem; }
+  .project-detail__header--compact {
+    padding-top: 2.25rem;
+    padding-bottom: 2.5rem;
+    gap: 1.75rem;
+  }
+  .project-detail__header--compact .back-link { margin-bottom: 1.4rem; }
+  .project-detail__header--compact .project-detail__meta {
+    margin-top: 1.4rem;
+    padding-top: .9rem;
+  }
+  .project-detail__meta div,
+  .project-detail__header--compact .project-detail__meta div {
+    grid-template-columns: 1fr;
+    gap: .25rem;
+  }
   .project-detail__header--video { padding-top: 2rem; padding-bottom: 2.25rem; }
   .project-detail__intro--video h1 { font-size: clamp(3rem, 16vw, 4.6rem); }
   .project-detail__meta--video {
@@ -1021,6 +1094,10 @@ main { overflow: hidden; }
     gap: .35rem;
   }
   .section-shell { padding: 4rem 0; }
+  .project-cta--compact {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
   .site-footer__inner { align-items: flex-start; flex-direction: column; gap: .75rem; }
   .site-footer__end { width: 100%; justify-content: space-between; flex-wrap: wrap; }
 }
@@ -1298,6 +1375,11 @@ main { overflow: hidden; }
     grid-template-columns: minmax(180px,.55fr) minmax(0,1.45fr);
     gap: 2rem 3rem;
   }
+  .project-story--no-visual {
+    grid-template-columns: minmax(180px,.55fr) minmax(0,1.45fr);
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
   .project-story__visual {
     grid-column: 1 / -1;
     height: 290px;
@@ -1359,6 +1441,17 @@ main { overflow: hidden; }
     gap: 1.45rem;
     padding-top: 3.2rem;
     padding-bottom: 3.2rem;
+  }
+  .project-story--no-visual {
+    grid-template-columns: 1fr;
+    gap: 1.25rem;
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
+  .project-story--features.project-story--no-visual .contribution-list li {
+    padding-left: 3.15rem;
+    padding-top: .55rem;
+    padding-bottom: .55rem;
   }
   .project-story__visual {
     grid-column: auto;

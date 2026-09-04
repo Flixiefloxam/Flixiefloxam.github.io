@@ -99,6 +99,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     id: 'neon-swarm',
+    compactDetailSections: true,
     category: 'personal-games',
     categoryLabel: 'Personal Game',
     title: 'Neon Swarm',
@@ -137,6 +138,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     id: 'ai-level-platformer',
+    compactDetailSections: true,
     category: 'personal-projects',
     categoryLabel: 'Personal Project',
     title: 'AI Level Platformer',
@@ -164,6 +166,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     id: 'genetic-algorithm-maze',
+    compactDetailSections: true,
     category: 'personal-projects',
     categoryLabel: 'Personal Project',
     title: 'Genetic Algorithm Maze',
@@ -195,6 +198,7 @@ window.PORTFOLIO_PROJECTS = [
   },
   {
     id: 'face-recognition-ai',
+    compactDetailSections: true,
     category: 'personal-projects',
     categoryLabel: 'Personal Project',
     title: 'Facial Recognition AI',

@@ -168,7 +168,7 @@
     .join('');
 
   const standardHeader = `
-    <header class="project-detail__header">
+    <header class="project-detail__header${project.compactDetailSections ? ' project-detail__header--compact' : ''}">
       <div class="project-detail__intro" data-reveal>
         <a class="back-link" href="../#projects">← All projects</a>
         <p class="eyebrow">${project.categoryLabel}${project.year ? ` <span aria-hidden="true">/</span> ${project.year}` : ''}</p>
@@ -216,7 +216,7 @@
     ${hasTrailer ? videoHeader : standardHeader}
 
     ${project.compactDetailSections ? `
-    <section class="project-story project-story--overview section-shell" data-reveal>
+    <section class="project-story project-story--overview${project.sectionVisuals?.overview?.src ? '' : ' project-story--no-visual'} section-shell" data-reveal>
       <div class="project-story__heading">
         <p class="section-kicker">Overview</p>
         <h2>About the project</h2>
@@ -244,7 +244,7 @@
     ${storyBeforeFeatures}
 
     ${project.compactDetailSections ? `
-    <section class="project-story project-story--features section-shell section-shell--bordered" data-reveal>
+    <section class="project-story project-story--features${project.sectionVisuals?.contribution?.src ? '' : ' project-story--no-visual'} section-shell section-shell--bordered" data-reveal>
       <div class="project-story__heading">
         <p class="section-kicker">${featureKicker}</p>
         <h2>${featureHeading}</h2>
@@ -274,7 +274,7 @@
     ${gallery}
 
     ${links ? `
-    <section class="project-cta section-shell" data-reveal>
+    <section class="project-cta${project.compactDetailSections ? ' project-cta--compact' : ''} section-shell" data-reveal>
       <div>
         <p class="section-kicker">Explore</p>
         <h2>Explore the implementation.</h2>
