@@ -7,6 +7,12 @@
 
   if (!root || !project) return;
 
+  // Track the specific project that was actually rendered. The analytics
+  // helper sends/queues this asynchronously and never blocks page rendering.
+  if (typeof window.trackPortfolioEvent === 'function') {
+    window.trackPortfolioEvent(`${project.title} page visited`);
+  }
+
   document.title = `${project.title} — Game Developer Portfolio`;
 
   if (project.pageBackground?.src) {
