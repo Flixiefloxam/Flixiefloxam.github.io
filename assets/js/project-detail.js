@@ -60,7 +60,7 @@
       </div>
       <div class="project-detail__video-caption">
         <span>${trailerLabel}</span>
-        <a href="https://www.youtube.com/watch?v=${project.trailer.youtubeId}" target="_blank" rel="noreferrer noopener">Watch on YouTube ↗</a>
+        <a href="https://www.youtube.com/watch?v=${project.trailer.youtubeId}" target="_blank" rel="noreferrer noopener" data-umami-event="Watch on YouTube" data-umami-event-project="${project.title}">Watch on YouTube ↗</a>
       </div>`
     : '';
 

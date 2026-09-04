@@ -34,7 +34,7 @@
           <div class="tag-list" aria-label="Technologies">
             ${project.tech.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}
           </div>
-          <a class="button button--primary project-row__button" href="project/?id=${encodeURIComponent(project.id)}">View project <span aria-hidden="true">↗</span></a>
+          <a class="button button--primary project-row__button" data-umami-event="Open project" data-umami-event-project="${project.title}" href="project/?id=${encodeURIComponent(project.id)}">View project <span aria-hidden="true">↗</span></a>
         </div>
       </article>
       `;
