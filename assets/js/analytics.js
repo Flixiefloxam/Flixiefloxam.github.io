@@ -43,9 +43,7 @@
 
     // Project repository links are explicitly marked by project-detail.js.
     if (link.dataset.projectRepo) {
-      sendEvent('Project GitHub repo', {
-        project: link.dataset.projectRepo
-      });
+      sendEvent(`${link.dataset.projectRepo} repo visited`);
       return;
     }
 
