@@ -291,9 +291,7 @@
       hasTrackedPlayback = true;
 
       if (typeof window.trackPortfolioEvent === 'function') {
-        window.trackPortfolioEvent('Project video played', {
-          project: project.title
-        });
+        window.trackPortfolioEvent(`${project.title} video played`);
       }
     };
 
