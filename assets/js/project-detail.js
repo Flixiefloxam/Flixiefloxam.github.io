@@ -33,7 +33,14 @@
     : '';
 
   const links = (project.links || [])
-    .map((link) => `<a class="button button--primary" href="${link.url}" ${link.url.startsWith('http') ? 'target="_blank" rel="noreferrer"' : ''}>${link.label}</a>`)
+    .map((link) => {
+      const isGitHubRepo = /^https?:\/\/(?:www\.)?github\.com\//i.test(link.url);
+      const analyticsAttribute = isGitHubRepo
+        ? `data-project-repo="${project.title}"`
+        : '';
+
+      return `<a class="button button--primary" href="${link.url}" ${link.url.startsWith('http') ? 'target="_blank" rel="noreferrer"' : ''} ${analyticsAttribute}>${link.label}</a>`;
+    })
     .join('');
 
   const hasTrailer = Boolean(project.trailer?.youtubeId);
@@ -47,9 +54,9 @@
       <div class="project-detail__video-frame">
         <div class="video-embed">
           <iframe
-            src="https://www.youtube-nocookie.com/embed/${project.trailer.youtubeId}?rel=0&playsinline=1"
+            src="https://www.youtube-nocookie.com/embed/${project.trailer.youtubeId}?rel=0&playsinline=1&enablejsapi=1"
             data-autoplay-trailer
-            data-autoplay-src="https://www.youtube-nocookie.com/embed/${project.trailer.youtubeId}?rel=0&playsinline=1&autoplay=1"
+            data-autoplay-src="https://www.youtube-nocookie.com/embed/${project.trailer.youtubeId}?rel=0&playsinline=1&autoplay=1&enablejsapi=1"
             title="${project.trailer.title || `${project.title} trailer`}"
             loading="eager"
             referrerpolicy="strict-origin-when-cross-origin"
@@ -60,7 +67,7 @@
       </div>
       <div class="project-detail__video-caption">
         <span>${trailerLabel}</span>
-        <a href="https://www.youtube.com/watch?v=${project.trailer.youtubeId}" target="_blank" rel="noreferrer noopener" data-umami-event="Watch on YouTube" data-umami-event-project="${project.title}">Watch on YouTube ↗</a>
+        <a href="https://www.youtube.com/watch?v=${project.trailer.youtubeId}" target="_blank" rel="noreferrer noopener">Watch on YouTube ↗</a>
       </div>`
     : '';
 
@@ -276,11 +283,68 @@
     const trailerContainer = autoplayTrailer.closest('.video-embed') || autoplayTrailer;
     const autoplaySrc = autoplayTrailer.dataset.autoplaySrc;
     let hasStarted = false;
+    let hasTrackedPlayback = false;
+    let youtubePlayer = null;
+
+    const trackPlayback = () => {
+      if (hasTrackedPlayback) return;
+      hasTrackedPlayback = true;
+
+      if (typeof window.trackPortfolioEvent === 'function') {
+        window.trackPortfolioEvent('Project video played', {
+          project: project.title
+        });
+      }
+    };
+
+    const createYouTubePlayer = () => {
+      if (youtubePlayer || !window.YT || typeof window.YT.Player !== 'function') return;
+
+      try {
+        youtubePlayer = new window.YT.Player(autoplayTrailer, {
+          events: {
+            onStateChange: (event) => {
+              if (event.data === window.YT.PlayerState.PLAYING) {
+                trackPlayback();
+              }
+            }
+          }
+        });
+      } catch (_) {
+        // Video playback must remain unaffected if analytics setup fails.
+      }
+    };
+
+    const loadYouTubeApi = () => {
+      if (window.YT && typeof window.YT.Player === 'function') {
+        createYouTubePlayer();
+        return;
+      }
+
+      const previousReadyHandler = window.onYouTubeIframeAPIReady;
+      window.onYouTubeIframeAPIReady = () => {
+        if (typeof previousReadyHandler === 'function') previousReadyHandler();
+        createYouTubePlayer();
+      };
+
+      if (!document.querySelector('script[data-youtube-iframe-api]')) {
+        const script = document.createElement('script');
+        script.src = 'https://www.youtube.com/iframe_api';
+        script.async = true;
+        script.dataset.youtubeIframeApi = '';
+        document.head.appendChild(script);
+      }
+    };
 
     const startTrailer = () => {
       if (hasStarted || !autoplaySrc) return;
       hasStarted = true;
+
+      autoplayTrailer.addEventListener('load', loadYouTubeApi, { once: true });
       autoplayTrailer.src = autoplaySrc;
+
+      // If the iframe was already ready/cached, this is harmless.
+      loadYouTubeApi();
     };
 
     if ('IntersectionObserver' in window) {
