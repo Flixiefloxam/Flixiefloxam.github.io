@@ -51,10 +51,61 @@
 
   const hasTrailer = Boolean(project.trailer?.youtubeId);
   const trailerLabel = project.trailer?.sectionTitle || 'Official trailer';
-  const productionMeta = [
-    project.studio ? `<div><span>Studio</span><strong>${project.studio}</strong></div>` : '',
-    project.publisher ? `<div><span>Publisher</span><strong>${project.publisher}</strong></div>` : ''
-  ].join('');
+  const technologies = project.technologies || project.tech || [];
+
+  const studioMeta = project.studio
+    ? `<div class="project-meta__studio">
+        <span>Studio</span>
+        ${project.studioLogo?.src
+          ? `<img class="project-meta__logo project-meta__logo--studio" src="${project.studioLogo.src}" alt="${project.studioLogo.alt || project.studio}" loading="eager" referrerpolicy="no-referrer">`
+          : `<strong>${project.studio}</strong>`}
+      </div>`
+    : '';
+
+  const publisherMeta = project.publisher
+    ? `<div class="project-meta__publisher">
+        <span>Publisher</span>
+        ${project.publisherLogo?.src
+          ? `<img class="project-meta__logo project-meta__logo--publisher" src="${project.publisherLogo.src}" alt="${project.publisherLogo.alt || project.publisher}" loading="eager" referrerpolicy="no-referrer">`
+          : `<strong>${project.publisher}</strong>`}
+      </div>`
+    : '';
+
+  const technologyLogoEntries = technologies
+    .map((technology) => project.technologyLogos?.[technology])
+    .filter(Boolean);
+
+  const technologiesMeta = `
+    <div class="project-meta__technologies">
+      <span>Technologies</span>
+      ${technologyLogoEntries.length === technologies.length && technologyLogoEntries.length
+        ? `<div class="project-meta__technology-logos">
+            ${technologyLogoEntries.map((logo) => `<img class="project-meta__logo project-meta__logo--technology" src="${logo.src}" alt="${logo.alt || 'Technology logo'}" loading="eager" referrerpolicy="no-referrer">`).join('')}
+          </div>`
+        : `<strong>${technologies.join(' · ') || '—'}</strong>`}
+    </div>`;
+
+  const roleMeta = project.role
+    ? `<div class="project-meta__role"><span>Role</span><strong>${project.role}</strong></div>`
+    : '';
+  const focusMeta = project.focus
+    ? `<div class="project-meta__focus"><span>Focus</span><strong>${project.focus}</strong></div>`
+    : '';
+
+  const orderedMetaItems = [
+    studioMeta,
+    publisherMeta,
+    technologiesMeta,
+    roleMeta,
+    focusMeta
+  ].filter(Boolean);
+
+  const orderedMeta = orderedMetaItems.join('');
+  const metaCount = orderedMetaItems.length;
+
+  const publisherTitleLogo = project.publisherLogo?.src
+    ? `<img class="project-title-lockup__publisher-logo" src="${project.publisherLogo.src}" alt="${project.publisherLogo.alt || project.publisher || 'Publisher logo'}" loading="eager" referrerpolicy="no-referrer">`
+    : '';
   const trailerMedia = hasTrailer
     ? `
       <div class="project-detail__video-frame">
@@ -174,12 +225,6 @@
         <p class="eyebrow">${project.categoryLabel}${project.year ? ` <span aria-hidden="true">/</span> ${project.year}` : ''}</p>
         <h1>${project.title}</h1>
         <p class="project-detail__lede">${project.summary}</p>
-        <div class="project-detail__meta">
-          <div><span>Role</span><strong>${project.role || '—'}</strong></div>
-          <div><span>Technologies</span><strong>${(project.technologies || project.tech || []).join(' · ') || '—'}</strong></div>
-          <div><span>Focus</span><strong>${project.focus || '—'}</strong></div>
-          ${productionMeta}
-        </div>
       </div>
       <div class="project-detail__media" data-reveal>
         <div class="project-cover">
@@ -187,6 +232,9 @@
           ${statusRibbon}
         </div>
         ${imageCredit}
+      </div>
+      <div class="project-detail__meta project-detail__meta--facts" style="--project-meta-count:${metaCount}" data-reveal>
+        ${orderedMeta}
       </div>
     </header>`;
 
@@ -196,7 +244,10 @@
 
       <div class="project-detail__intro project-detail__intro--video" data-reveal>
         <p class="eyebrow">${project.categoryLabel}${project.year ? ` <span aria-hidden="true">/</span> ${project.year}` : ''}</p>
-        <h1>${project.title}</h1>
+        <div class="project-title-lockup${publisherTitleLogo ? ' project-title-lockup--with-publisher' : ''}">
+          <h1>${project.title}</h1>
+          ${publisherTitleLogo}
+        </div>
         <p class="project-detail__lede">${project.summary}</p>
       </div>
 
@@ -204,11 +255,8 @@
         ${trailerMedia}
       </div>
 
-      <div class="project-detail__meta project-detail__meta--video" data-reveal>
-        <div><span>Role</span><strong>${project.role || '—'}</strong></div>
-        <div><span>Technologies</span><strong>${(project.technologies || project.tech || []).join(' · ') || '—'}</strong></div>
-        <div><span>Focus</span><strong>${project.focus || '—'}</strong></div>
-        ${productionMeta}
+      <div class="project-detail__meta project-detail__meta--video project-detail__meta--facts" style="--project-meta-count:${metaCount}" data-reveal>
+        ${orderedMeta}
       </div>
     </header>`;
 

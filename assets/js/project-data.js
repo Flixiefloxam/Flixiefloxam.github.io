@@ -8,7 +8,21 @@ window.PORTFOLIO_PROJECTS = [
     technologies: ['C++'],
     focus: 'Gameplay Systems · Live-Service Development',
     studio: 'Glowmade',
+    studioLogo: {
+      src: '../assets/images/glowmade-logo.png',
+      alt: 'Glowmade'
+    },
     publisher: 'Amazon Games',
+    publisherLogo: {
+      src: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Amazon_Games_2025.svg',
+      alt: 'Amazon Games'
+    },
+    technologyLogos: {
+      'C++': {
+        src: 'https://raw.githubusercontent.com/isocpp/logos/master/cpp_logo.svg',
+        alt: 'C++'
+      }
+    },
     year: '2024',
     image: 'https://images.ctfassets.net/z4mnmfs6j6sv/4h1LHXbkjEUbbGQlOaBVBi/f0c1cd339eadbcf42a7bb55231d78669/KoM_StandardEdition_KeyArt2.jpg',
     imageFallback: '../assets/images/project-king-of-meat.svg',
