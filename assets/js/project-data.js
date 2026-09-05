@@ -120,6 +120,16 @@ window.PORTFOLIO_PROJECTS = [
     wip: true,
     role: 'Solo Developer',
     technologies: ['Godot', 'C#'],
+    technologyLogos: {
+      'Godot': {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/godot/godot-original.svg',
+        alt: 'Godot'
+      },
+      'C#': {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg',
+        alt: 'C#'
+      }
+    },
     focus: 'Gameplay Systems · Enemy Swarms · Combat Architecture',
     year: 'In development',
     image: '../assets/images/project-neon-swarm-cover.png',
@@ -158,6 +168,20 @@ window.PORTFOLIO_PROJECTS = [
     title: 'AI Level Platformer',
     role: 'AI & Gameplay Programmer',
     technologies: ['Godot', 'C#', 'Python'],
+    technologyLogos: {
+      'Godot': {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/godot/godot-original.svg',
+        alt: 'Godot'
+      },
+      'C#': {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg',
+        alt: 'C#'
+      },
+      'Python': {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+        alt: 'Python'
+      }
+    },
     focus: 'Procedural Generation · AI Systems · Gameplay Integration',
     year: '2026',
     image: '../assets/images/project-ai-level-platformer-cover.png',
@@ -167,7 +191,8 @@ window.PORTFOLIO_PROJECTS = [
       position: 'center center',
       overlay: 0.74
     },
-    summary: 'A solo-developed Godot platformer comparing AI and procedural level-generation techniques, with Python-generated layouts integrated into a complete C# gameplay layer.',
+    summary: 'A solo-developed Godot platformer created as my final-year personal project at the University of Sussex, comparing AI procedural level-generation techniques, with Python-generated layouts integrated into a complete C# gameplay layer.',
+    summaryNote: 'The project received 83% and was considered outstanding by Sussex University.',
     overview: 'This experimental Godot platformer compares several approaches to procedural level generation, including 1D and 2D Markov chains, Wave Function Collapse and a convolutional neural network experiment. Python-generated layouts are loaded into a C# gameplay layer containing the player controller, level selection, menus and supporting game systems.',
     keyFeatures: [
       '<strong>Multiple generation approaches:</strong> Compares 1D and 2D Markov chains, Wave Function Collapse and a CNN-based experiment within one project.',
@@ -187,6 +212,12 @@ window.PORTFOLIO_PROJECTS = [
     heroDisplay: 'contain',
     role: 'AI Programmer',
     technologies: ['Python'],
+    technologyLogos: {
+      'Python': {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+        alt: 'Python'
+      }
+    },
     focus: 'Genetic Algorithms · Pathfinding · Procedural Generation',
     year: '2025',
     image: '../assets/images/genetic-maze-learning-progress-v2.gif',
@@ -218,6 +249,12 @@ window.PORTFOLIO_PROJECTS = [
     title: 'Facial Recognition AI',
     role: 'Machine Learning Programmer',
     technologies: ['Python'],
+    technologyLogos: {
+      'Python': {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg',
+        alt: 'Python'
+      }
+    },
     focus: 'Computer Vision · Machine Learning · Facial Landmark Detection',
     year: '2025',
     image: '../assets/images/project-face-alignment-cover.png',

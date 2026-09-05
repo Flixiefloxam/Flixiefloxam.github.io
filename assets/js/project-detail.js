@@ -57,7 +57,7 @@
     ? `<div class="project-meta__studio">
         <span>Studio</span>
         ${project.studioLogo?.src
-          ? `<img class="project-meta__logo project-meta__logo--studio" src="${project.studioLogo.src}" alt="${project.studioLogo.alt || project.studio}" loading="eager" referrerpolicy="no-referrer">`
+          ? `<img class="project-meta__logo project-meta__logo--studio" src="${project.studioLogo.src}" alt="${project.studioLogo.alt || project.studio}" title="${project.studioLogo.alt || project.studio}" loading="eager" referrerpolicy="no-referrer">`
           : `<strong>${project.studio}</strong>`}
       </div>`
     : '';
@@ -66,7 +66,7 @@
     ? `<div class="project-meta__publisher">
         <span>Publisher</span>
         ${project.publisherLogo?.src
-          ? `<img class="project-meta__logo project-meta__logo--publisher" src="${project.publisherLogo.src}" alt="${project.publisherLogo.alt || project.publisher}" loading="eager" referrerpolicy="no-referrer">`
+          ? `<img class="project-meta__logo project-meta__logo--publisher" src="${project.publisherLogo.src}" alt="${project.publisherLogo.alt || project.publisher}" title="${project.publisherLogo.alt || project.publisher}" loading="eager" referrerpolicy="no-referrer">`
           : `<strong>${project.publisher}</strong>`}
       </div>`
     : '';
@@ -80,7 +80,7 @@
       <span>Technologies</span>
       ${technologyLogoEntries.length === technologies.length && technologyLogoEntries.length
         ? `<div class="project-meta__technology-logos">
-            ${technologyLogoEntries.map((logo) => `<img class="project-meta__logo project-meta__logo--technology" src="${logo.src}" alt="${logo.alt || 'Technology logo'}" loading="eager" referrerpolicy="no-referrer">`).join('')}
+            ${technologyLogoEntries.map((logo) => `<img class="project-meta__logo project-meta__logo--technology" src="${logo.src}" alt="${logo.alt || 'Technology logo'}" title="${logo.alt || 'Technology'}" loading="eager" referrerpolicy="no-referrer">`).join('')}
           </div>`
         : `<strong>${technologies.join(' · ') || '—'}</strong>`}
     </div>`;
@@ -225,6 +225,7 @@
         <p class="eyebrow">${project.categoryLabel}${project.year ? ` <span aria-hidden="true">/</span> ${project.year}` : ''}</p>
         <h1>${project.title}</h1>
         <p class="project-detail__lede">${project.summary}</p>
+        ${project.summaryNote ? `<p class="project-detail__lede project-detail__lede--note"><strong>${project.summaryNote}</strong></p>` : ''}
       </div>
       <div class="project-detail__media" data-reveal>
         <div class="project-cover">
@@ -249,6 +250,7 @@
           ${publisherTitleLogo}
         </div>
         <p class="project-detail__lede">${project.summary}</p>
+        ${project.summaryNote ? `<p class="project-detail__lede project-detail__lede--note"><strong>${project.summaryNote}</strong></p>` : ''}
       </div>
 
       <div class="project-detail__media project-detail__media--video" data-reveal>

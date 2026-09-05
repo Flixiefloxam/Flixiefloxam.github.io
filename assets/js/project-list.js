@@ -31,6 +31,7 @@
           <p class="eyebrow">${escapeHtml(project.role)}${project.year ? ` <span aria-hidden="true">/</span> ${escapeHtml(project.year)}` : ''}</p>
           <h3>${escapeHtml(project.title)}</h3>
           <p>${escapeHtml(project.summary)}</p>
+          ${project.summaryNote ? `<p class="project-list__summary-note"><strong>${escapeHtml(project.summaryNote)}</strong></p>` : ''}
           <div class="tag-list" aria-label="Technologies">
             ${project.tech.map((item) => `<span>${escapeHtml(item)}</span>`).join('')}
           </div>

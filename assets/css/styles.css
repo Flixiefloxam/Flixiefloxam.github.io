@@ -650,6 +650,12 @@ main { overflow: hidden; }
   margin-bottom: 0;
   max-width: 34rem;
 }
+.project-detail__lede--note {
+  margin-top: .75rem;
+}
+.project-list__summary-note {
+  margin-top: .65rem;
+}
 .project-title-lockup {
   position: relative;
   width: 100%;
