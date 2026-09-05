@@ -54,7 +54,7 @@ window.PORTFOLIO_PROJECTS = [
     gallerySource: 'https://www.amazongamestudios.com/en-gb/news/articles/king-of-meat-out-now',
     compactDetailSections: true,
     compactGallery: true,
-    summary: 'Credited programmer on the shipped title King of Meat. Developed gameplay systems, live-service level mutators, player upgrades, throwing mechanics and interactable systems within a large production codebase.',
+    summary: 'Credited programmer on the shipped Amazon Games title King of Meat. Developed gameplay systems, live-service level mutators, player upgrades, throwing mechanics and interactable systems within a large production codebase.',
     overview: 'During my 2024 programming internship at Glowmade, I contributed to King of Meat as a credited programmer. I worked within a large existing codebase and collaborated closely with designers and other gameplay programmers to develop and refine player-facing systems.',
     storySections: [
       {
