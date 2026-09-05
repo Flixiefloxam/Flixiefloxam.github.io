@@ -74,9 +74,11 @@ window.PORTFOLIO_PROJECTS = [
       {
         position: 'before-features',
         kicker: 'Motivation',
-        title: 'Why I wanted this experience',
-        body: [
-          'After my first placement at Glowmade, I was invited back for a second internship, where I joined the gameplay team working on King of Meat, developed by Glowmade and published by Amazon Games. I wanted to move beyond university and personal projects and learn how gameplay systems are created and delivered within a professional studio. I loved that I could spend an entire day wrestling with a gameplay problem and still be excited to pick it up again the following morning. It made me realise that gameplay programming was the kind of work that would never lose its appeal, and that I’d love to be part of it every day.'
+        title: 'Why this experience mattered',
+        layout: 'points',
+        items: [
+          '<strong>Professional studio experience:</strong> Being invited back to Glowmade gave me the opportunity to move beyond university and personal projects and learn how gameplay systems are created and delivered by a professional team on King of Meat, developed by Glowmade and published by Amazon Games.',
+          '<strong>Work I always wanted to return to:</strong> I loved that I could spend an entire day wrestling with a gameplay problem and still be excited to pick it up again the following morning. It made me realise that gameplay programming would never lose its appeal and was the work I wanted to do every day.'
         ],
         visual: {
           src: 'https://images.ctfassets.net/z4mnmfs6j6sv/yDA9x8p5amjt05Ihr9TtA/dcde1b86114b84e53b4291007d22ac9a/KOM_Announce_Screenshots_Gameplay_02-1920x1080.jpg',
@@ -88,11 +90,11 @@ window.PORTFOLIO_PROJECTS = [
         position: 'after-features',
         kicker: 'Reflection',
         title: 'What I learned',
-        layout: 'reflection',
-        body: [
-          'King of Meat was built in Glowmade’s proprietary engine, so I had to become productive without relying on an engine I already knew and learn how to navigate a large existing C++ codebase. I began with debugging tasks, but within my first week I had progressed to implementing complete gameplay features. My work went through code review, was tested with QA, refined in response to feedback and included in the released game.',
-          'Alongside programming, I learned how a professional studio plans and delivers work. I took part in daily stand-ups, managed features and bugs through Jira, used Perforce within a shared codebase and worked towards production milestones. This taught me to communicate progress and blockers clearly, collaborate with designers and other programmers, respond constructively to feedback, and recognise when to investigate independently and when asking for help would keep the work moving.',
-          'The most important lesson was that production code must do more than make a feature work. It has to integrate safely with existing systems, be clear enough for other programmers to maintain and be reliable enough to ship. Being invited back by Glowmade, seeing my features in the final release and receiving a programming credit on the Amazon Studios game King of Meat are achievements I am incredibly proud of.'
+        layout: 'points',
+        items: [
+          '<strong>Adapting quickly to an unfamiliar engine:</strong> King of Meat used Glowmade’s proprietary engine and a large C++ codebase. I began with debugging, but within my first week was implementing complete gameplay features that went through code review, QA testing and refinement before being included in the released game.',
+          '<strong>Working within a professional studio:</strong> Daily stand-ups, Jira, Perforce and production milestones became part of my working routine, alongside communicating progress and blockers, collaborating with designers and programmers, responding to feedback, and knowing when to investigate independently or ask for help.',
+          '<strong>Writing code that is ready to ship:</strong> A working feature is only the beginning. Production code must integrate safely, remain maintainable and be reliable enough to ship. Being invited back by Glowmade, seeing my features released and receiving a programming credit on a title published by Amazon Games are achievements I am incredibly proud of.'
         ],
         visual: {
           src: 'https://images.ctfassets.net/z4mnmfs6j6sv/42hi2TS8w8VvH02UKgBgIj/93d36d80f706fbace9efd4313fe49c75/KOM_Announce_Screenshots_Gameplay_07-1920x1080.jpg',
@@ -150,6 +152,29 @@ window.PORTFOLIO_PROJECTS = [
     },
     summary: 'A solo-developed action game built in Godot and C#, featuring large enemy swarms, modular combat systems, weapons, pickups, upgrades and effects-driven player feedback.',
     overview: 'Neon Swarm is a solo-developed 2D action roguelike game built in Godot with C#. I structured the codebase around modular and data driven player, enemy, weapon, spawning, pickup, upgrade, UI and visual-effects systems, allowing features to be developed, balanced and extended easily.',
+    storySections: [
+      {
+        position: 'before-features',
+        kicker: 'Motivation',
+        title: 'Why I built Neon Swarm',
+        layout: 'points',
+        items: [
+          '<strong>A genre I genuinely love:</strong> Roguelikes are probably the genre I have spent more time playing than any other, and the type of game I most enjoy creating. Neon Swarm gives me the chance to develop my game programming skills through a project I am genuinely passionate about.',
+          '<strong>Scalable gameplay physics:</strong> I want Neon Swarm’s screen packed with enemies that still feel physically present, reacting convincingly to the player and the world. A full rigid-body simulation for every enemy would be too costly, so I am building a lighter movement and collision system that preserves responsive interactions at swarm scale. Finding the right balance between believable physics and performance is the kind of problem that makes me love game programming.'
+        ]
+      },
+      {
+        position: 'after-features',
+        kicker: 'Reflection',
+        title: 'What I learned',
+        layout: 'points',
+        items: [
+          '<strong>Physics at scale:</strong> Making something feel real does not mean simulating every object in full. Large numbers of enemies can remain moving and physically interactive without the performance cost of giving each one a rigid body.',
+          '<strong>Data-driven architecture:</strong> Good structure saves time as the game grows. A fully data-driven system enables me to add new enemies, weapons and upgrades without rewriting the underlying code each time.',
+          '<strong>Game balancing:</strong> Balancing numerous independent, infinitely stacking upgrades against an enemy threat that continually grows and becomes more varied.'
+        ]
+      }
+    ],
     keyFeatures: [
       '<strong>Centralised swarm controller:</strong> Coordinates large enemy groups efficiently while reducing the processing required from individual agents.',
       '<strong>Modular combat architecture:</strong> Separates player, enemy, weapon, and spawning systems so gameplay features can be extended and balanced independently.',
@@ -194,6 +219,30 @@ window.PORTFOLIO_PROJECTS = [
     summary: 'A solo-developed Godot platformer created as my final-year personal project at the University of Sussex, comparing AI procedural level-generation techniques, with Python-generated layouts integrated into a complete C# gameplay layer.',
     summaryNote: 'The project received 83% and was considered outstanding by Sussex University.',
     overview: 'This experimental Godot platformer compares several approaches to procedural level generation, including 1D and 2D Markov chains, Wave Function Collapse and a convolutional neural network experiment. Python-generated layouts are loaded into a C# gameplay layer containing the player controller, level selection, menus and supporting game systems.',
+    storySections: [
+      {
+        position: 'before-features',
+        kicker: 'Motivation',
+        title: 'Why I chose this project',
+        layout: 'points',
+        items: [
+          '<strong>Combining AI with game development:</strong> I was fascinated by how AI could shape the game world itself. This project gave me the chance to bring together the two areas I am most interested in and explore whether different generation methods could create levels that were genuinely playable.',
+          '<strong>Turning the research into a game:</strong> I did not want to compare algorithms only through data or generated images. I wanted to programme the platformer around them, load their levels into Godot and discover what happened when someone actually tried to play them.'
+        ]
+      },
+      {
+        position: 'after-features',
+        kicker: 'Reflection',
+        title: 'What I learned',
+        layout: 'points',
+        items: [
+          '<strong>Playability has to be tested through play:</strong> A generated level can look convincing and pass structural checks while still be impossible to complete. Running every level in Godot showed me that gameplay is the real test of whether generation has succeeded.',
+          '<strong>Local patterns do not create a complete level:</strong> Markov chains and standard Wave Function Collapse reproduced small sections of level structure but often failed to create a continuous route. Adding a traversal scaffold before applying WFC increased playability to 90%, showing me that local variation needs to be guided by an overall level structure.',
+          '<strong>More complex AI is not always the better tool:</strong> The CNN could not produce coherent levels from the limited dataset of 16 examples. I learned to choose an approach based on the available data and the problem it needs to solve, rather than assuming the most advanced model will produce the best result.',
+          '<strong>Level design and physics must work together:</strong> Fixing and tuning the player’s speed, jump height, gravity and collision behaviour showed me how closely playability depends on the relationship between movement and level geometry. A platform only works if the player’s movement system makes it reachable.'
+        ]
+      }
+    ],
     keyFeatures: [
       '<strong>Multiple generation approaches:</strong> Compares 1D and 2D Markov chains, Wave Function Collapse and a CNN-based experiment within one project.',
       '<strong>Cross-language pipeline:</strong> Integrates Python level-generation code with a Godot and C# gameplay layer.',
@@ -232,6 +281,30 @@ window.PORTFOLIO_PROJECTS = [
     },
     summary: 'A solo-developed Python project that generates random mazes and uses a population-based genetic algorithm to evolve increasingly effective routes through them.',
     overview: 'Genetic Algorithm Maze explores evolutionary search in procedurally generated pathfinding environments. Each run creates a random maze, then applies a population-based genetic algorithm to evaluate, select and evolve candidate routes until it finds a solution.',
+    storySections: [
+      {
+        position: 'before-features',
+        kicker: 'Motivation',
+        title: 'Why I chose this project',
+        layout: 'points',
+        items: [
+          '<strong>Turning evolution into something I could watch:</strong> I wanted to see how a population of unsuccessful routes could gradually produce a solution without being given the correct path. A procedurally generated maze made that process visible, from the first random attempts to a route that finally reached the exit.',
+          '<strong>Understanding the algorithm by programming it:</strong> I built each stage in Python, generating candidate routes, evaluating their fitness, selecting the strongest and evolving the next generation. Seeing behaviour emerge from rules I had written was what made the project so satisfying.'
+        ]
+      },
+      {
+        position: 'after-features',
+        kicker: 'Reflection',
+        title: 'What I learned',
+        layout: 'points',
+        items: [
+          '<strong>Designing the fitness function is the real challenge:</strong> Candidate routes still need to be rewarded for useful progress before any of them can complete the maze. The measurements I chose determined which behaviour survived and therefore what the population eventually learned to do.',
+          '<strong>Progress and exploration must remain balanced:</strong> Preserving the strongest routes allows the population to improve, but it still needs enough variation to escape dead ends. Too little variation causes the search to stall, while too much can destroy useful behaviour.',
+          '<strong>Procedural generation exposes weak logic:</strong> Because every run creates a different maze, the algorithm cannot depend on assumptions from a single layout. It has to respond reliably to new paths, obstacles and dead ends.',
+          '<strong>AI is easier to improve when its decisions are visible:</strong> Keeping candidate routes, fitness scores and generations inspectable allowed me to understand why the population was improving or becoming stuck, rather than treating the algorithm as a black box.'
+        ]
+      }
+    ],
     keyFeatures: [
       '<strong>Evolutionary pathfinding:</strong> Uses a genetic algorithm instead of a conventional deterministic search method to solve generated mazes.',
       '<strong>Procedural environments:</strong> Creates a different random maze for each run, testing the solver against changing layouts.',
@@ -264,8 +337,32 @@ window.PORTFOLIO_PROJECTS = [
       position: 'right center',
       overlay: 0.56
     },
-    summary: 'A solo-developed Python computer-vision project that uses machine learning to locate five key facial landmarks: both eyes, the nose and both corners of the mouth.',
+    summary: 'A solo Python computer-vision project that locates five facial landmarks: both eyes, the nose and both corners of the mouth. It maps facial structure rather than identifying the individual.',
     overview: 'Facial Recognition AI is a machine-learning project focused on locating key facial features within portrait images. It compares alternative models for predicting five facial landmarks and converts each image into structured coordinate data that can support face alignment and further image-processing tasks.',
+    storySections: [
+      {
+        position: 'before-features',
+        kicker: 'Motivation',
+        title: 'Why I chose this project',
+        layout: 'points',
+        items: [
+          '<strong>Making machine learning tangible:</strong> Facial landmark detection interested me because I could see immediately whether the model had succeeded. Instead of producing an abstract prediction, it had to place five points accurately onto a real face.',
+          '<strong>Testing different approaches:</strong> I wanted to understand how several machine-learning models would respond to exactly the same visual problem, rather than developing one model without knowing whether another approach would perform better.'
+        ]
+      },
+      {
+        position: 'after-features',
+        kicker: 'Reflection',
+        title: 'What I learned',
+        layout: 'points',
+        items: [
+          '<strong>Image representation matters as much as model choice:</strong> Converting each image into HOG features showed me how the information given to a model determines which facial shapes and edges it can recognise.',
+          '<strong>Model choice should be evidence-led:</strong> Comparing Ridge, Lasso, Random Forest and MLP regression taught me to judge an approach through measured prediction error, rather than assuming the most complex model will be the most accurate.',
+          '<strong>Average accuracy can conceal important failures:</strong> Error metrics and accuracy graphs revealed overall performance, but plotting the predicted points directly onto faces exposed mistakes that the averages could hide. Reviewing the worst predictions helped me understand where each model struggled.',
+          '<strong>Predictions must be useful beyond the model:</strong> Building the image-to-coordinate pipeline taught me how to turn machine-learning output into structured data that could support face alignment and further image processing.'
+        ]
+      }
+    ],
     keyFeatures: [
       '<strong>Facial landmark prediction:</strong> Locates both eyes, the nose and both corners of the mouth within portrait images.',
       '<strong>Model comparison:</strong> Evaluates alternative machine-learning approaches against the same landmark-localisation task.',

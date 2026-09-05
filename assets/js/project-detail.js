@@ -165,7 +165,9 @@
   const featureHeading = isProfessionalProject ? 'What I worked on' : 'Key Features';
 
   const storySection = (section) => {
-    if (!section?.title || !(section.body || []).length) return '';
+    const hasBody = (section?.body || []).length > 0;
+    const hasItems = (section?.items || []).length > 0;
+    if (!section?.title || (!hasBody && !hasItems)) return '';
 
     const visual = section.visual?.src
       ? `
@@ -174,6 +176,20 @@
           ${section.visual.caption ? `<figcaption>${section.visual.caption}</figcaption>` : ''}
         </figure>`
       : '';
+
+    if (section.layout === 'points') {
+      return `
+        <section class="project-story project-story--points${visual ? '' : ' project-story--no-visual'} section-shell section-shell--bordered" data-reveal>
+          <div class="project-story__heading">
+            <p class="section-kicker">${section.kicker || 'Perspective'}</p>
+            <h2>${section.title}</h2>
+          </div>
+          <ul class="story-point-list">
+            ${(section.items || []).map((item) => `<li>${item}</li>`).join('')}
+          </ul>
+          ${visual}
+        </section>`;
+    }
 
     if (section.layout === 'reflection') {
       const mainParagraphs = section.body.slice(0, -1);
