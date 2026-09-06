@@ -13,7 +13,7 @@
     window.trackPortfolioEvent(`${project.title} page visited`);
   }
 
-  document.title = `${project.title} — Game Developer Portfolio`;
+  document.title = `${project.title} - Alex Seidel`;
 
   if (project.pageBackground?.src) {
     root.classList.add('project-detail--themed');
@@ -82,7 +82,7 @@
         ? `<div class="project-meta__technology-logos">
             ${technologyLogoEntries.map((logo) => `<img class="project-meta__logo project-meta__logo--technology" src="${logo.src}" alt="${logo.alt || 'Technology logo'}" title="${logo.alt || 'Technology'}" loading="eager" referrerpolicy="no-referrer">`).join('')}
           </div>`
-        : `<strong>${technologies.join(' · ') || '—'}</strong>`}
+        : `<strong>${technologies.join(' · ') || '-'}</strong>`}
     </div>`;
 
   const roleMeta = project.role

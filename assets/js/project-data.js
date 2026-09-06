@@ -26,7 +26,7 @@ window.PORTFOLIO_PROJECTS = [
     year: '2024',
     image: 'https://images.ctfassets.net/z4mnmfs6j6sv/4h1LHXbkjEUbbGQlOaBVBi/f0c1cd339eadbcf42a7bb55231d78669/KoM_StandardEdition_KeyArt2.jpg',
     imageFallback: '../assets/images/project-king-of-meat.svg',
-    imageCredit: 'Official King of Meat standard-edition key art — Amazon Games / Glowmade',
+    imageCredit: 'Official King of Meat standard-edition key art - Amazon Games / Glowmade',
     pageBackground: {
       src: 'https://images.ctfassets.net/5lpapfxq15sk/6yPOUzjMRJD3feXiuNOlm4/c5d8687753fe866e7c224a1f7d88cb99/KOM_SGF_2025_Screens_Combat_F_1080_CT-000018970.jpg',
       position: 'center top'
@@ -64,7 +64,7 @@ window.PORTFOLIO_PROJECTS = [
         caption: 'Player-facing systems in action'
       }
     },
-    galleryCredit: 'Official promotional screenshots — Amazon Games / Glowmade',
+    galleryCredit: 'Official promotional screenshots - Amazon Games / Glowmade',
     gallerySource: 'https://www.amazongamestudios.com/en-gb/news/articles/king-of-meat-out-now',
     compactDetailSections: true,
     compactGallery: true,
@@ -137,7 +137,7 @@ window.PORTFOLIO_PROJECTS = [
     image: '../assets/images/project-neon-swarm-cover.png',
     imageCredit: 'Neon Swarm gameplay screenshot',
     trailer: {
-      title: 'Neon Swarm — Gameplay Showcase (WIP)',
+      title: 'Neon Swarm - Gameplay Showcase (WIP)',
       youtubeId: 'zvIz4EgOZZM',
       sectionTitle: 'Gameplay trailer',
       description: 'See the current work-in-progress build of Neon Swarm in action.'
