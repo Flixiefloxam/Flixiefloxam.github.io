@@ -66,7 +66,7 @@
     ? `<div class="project-meta__publisher">
         <span>Publisher</span>
         ${project.publisherLogo?.src
-          ? `<img class="project-meta__logo project-meta__logo--publisher" src="${project.publisherLogo.src}" alt="${project.publisherLogo.alt || project.publisher}" title="${project.publisherLogo.alt || project.publisher}" loading="eager" referrerpolicy="no-referrer">`
+          ? `<div class="project-meta__publisher-logo"><img class="project-meta__logo project-meta__logo--publisher" src="${project.publisherLogo.src}" alt="${project.publisherLogo.alt || project.publisher}" title="${project.publisherLogo.alt || project.publisher}" loading="eager" referrerpolicy="no-referrer"></div>`
           : `<strong>${project.publisher}</strong>`}
       </div>`
     : '';
