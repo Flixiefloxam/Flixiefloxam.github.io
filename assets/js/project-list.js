@@ -14,9 +14,6 @@
     const items = projects.filter((project) => project.category === category);
 
     container.innerHTML = items.map((project, index) => {
-      const fallback = project.imageFallback
-        ? `onerror="this.onerror=null;this.src='${escapeHtml(project.imageFallback)}'"`
-        : '';
       const statusRibbon = project.wip
         ? '<span class="project-status-ribbon" title="Work in progress">WIP</span>'
         : '';
@@ -24,7 +21,7 @@
       return `
       <article class="project-row ${index % 2 ? 'project-row--reverse' : ''}" data-reveal>
         <a class="project-row__media" href="project/?id=${encodeURIComponent(project.id)}" aria-label="Read more about ${escapeHtml(project.title)}">
-          <img src="${escapeHtml(project.image)}" alt="Project artwork for ${escapeHtml(project.title)}" loading="lazy" referrerpolicy="no-referrer" ${fallback}>
+          <img src="${escapeHtml(project.image)}" alt="Project artwork for ${escapeHtml(project.title)}" loading="lazy" referrerpolicy="no-referrer">
           ${statusRibbon}
         </a>
         <div class="project-row__content">

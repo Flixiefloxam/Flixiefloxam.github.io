@@ -28,9 +28,6 @@
     root.style.setProperty('--project-page-overlay', String(project.pageBackground.overlay ?? 0.84));
   }
 
-  const imageFallback = project.imageFallback
-    ? `onerror="this.onerror=null;this.src='${project.imageFallback}'"`
-    : '';
   const imageCredit = project.imageCredit
     ? `<p class="project-image-credit">${project.imageCredit}</p>`
     : '';
@@ -66,7 +63,7 @@
     ? `<div class="project-meta__publisher">
         <span>Publisher</span>
         ${project.publisherLogo?.src
-          ? `<div class="project-meta__publisher-logo"><img class="project-meta__logo project-meta__logo--publisher" src="${project.publisherLogo.src}" alt="${project.publisherLogo.alt || project.publisher}" title="${project.publisherLogo.alt || project.publisher}" loading="eager" referrerpolicy="no-referrer"></div>`
+          ? `<img class="project-meta__logo project-meta__logo--publisher" src="${project.publisherLogo.src}" alt="${project.publisherLogo.alt || project.publisher}" title="${project.publisherLogo.alt || project.publisher}" loading="eager">`
           : `<strong>${project.publisher}</strong>`}
       </div>`
     : '';
@@ -136,7 +133,7 @@
           ${project.gallery.map((item, index) => `
             <figure class="project-gallery__item${index === 0 ? ' project-gallery__item--feature' : ''}">
               <a href="${item.src}" target="_blank" rel="noreferrer noopener" aria-label="Open full-size image: ${item.alt}">
-                <img src="${item.src}" alt="${item.alt}" loading="lazy" referrerpolicy="no-referrer" ${project.imageFallback ? `onerror="this.onerror=null;this.src='${project.imageFallback}'"` : ''}>
+                <img src="${item.src}" alt="${item.alt}" loading="lazy" referrerpolicy="no-referrer">
               </a>
               <figcaption>${item.caption}</figcaption>
             </figure>`).join('')}
@@ -147,7 +144,7 @@
 
   const sectionVisual = (visual) => visual?.src
     ? `<figure class="detail-section-visual">
-        <img src="${visual.src}" alt="${visual.alt || ''}" loading="lazy" referrerpolicy="no-referrer" ${project.imageFallback ? `onerror="this.onerror=null;this.src='${project.imageFallback}'"` : ''}>
+        <img src="${visual.src}" alt="${visual.alt || ''}" loading="lazy" referrerpolicy="no-referrer">
         ${visual.caption ? `<figcaption>${visual.caption}</figcaption>` : ''}
       </figure>`
     : '';
@@ -242,7 +239,7 @@
       </div>
       <div class="project-detail__media" data-reveal>
         <div class="project-cover">
-          <img class="project-detail__hero${project.heroDisplay === 'contain' ? ' project-detail__hero--contain' : ''}" src="${project.image}" alt="Project artwork for ${project.title}" referrerpolicy="no-referrer" ${imageFallback}>
+          <img class="project-detail__hero${project.heroDisplay === 'contain' ? ' project-detail__hero--contain' : ''}" src="${project.image}" alt="Project artwork for ${project.title}" referrerpolicy="no-referrer">
           ${statusRibbon}
         </div>
         ${imageCredit}

@@ -14,7 +14,7 @@ window.PORTFOLIO_PROJECTS = [
     },
     publisher: 'Amazon Games',
     publisherLogo: {
-      src: 'https://upload.wikimedia.org/wikipedia/commons/4/49/Amazon_Games_2025.svg',
+      src: '../assets/images/amazon-games-logo-white.png',
       alt: 'Amazon Games'
     },
     technologyLogos: {
@@ -25,7 +25,6 @@ window.PORTFOLIO_PROJECTS = [
     },
     year: '2024',
     image: 'https://images.ctfassets.net/z4mnmfs6j6sv/4h1LHXbkjEUbbGQlOaBVBi/f0c1cd339eadbcf42a7bb55231d78669/KoM_StandardEdition_KeyArt2.jpg',
-    imageFallback: '../assets/images/project-king-of-meat.svg',
     imageCredit: 'Official King of Meat standard-edition key art - Amazon Games / Glowmade',
     pageBackground: {
       src: 'https://images.ctfassets.net/5lpapfxq15sk/6yPOUzjMRJD3feXiuNOlm4/c5d8687753fe866e7c224a1f7d88cb99/KOM_SGF_2025_Screens_Combat_F_1080_CT-000018970.jpg',

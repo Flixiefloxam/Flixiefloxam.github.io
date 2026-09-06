@@ -683,14 +683,6 @@ main { overflow: hidden; }
   height: auto;
   max-height: 42px;
 }
-.project-meta__publisher-logo {
-  display: flex;
-  align-items: center;
-  align-self: stretch;
-  max-width: 100%;
-  -webkit-filter: brightness(0) invert(1);
-  filter: brightness(0) invert(1);
-}
 .project-meta__logo--publisher {
   width: min(100%, 108px);
   max-height: 32px;
