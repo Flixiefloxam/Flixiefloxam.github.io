@@ -43,13 +43,13 @@ if (window.location.pathname.endsWith('/index.html')) {
 
     document.querySelectorAll('[data-project-id]').forEach((element) => {
       const project = projectById.get(element.dataset.projectId);
-      if (!project?.wip || element.querySelector('.project-status-ribbon')) return;
+      if (!project?.wip || element.querySelector('.project-status-pill')) return;
 
-      const ribbon = document.createElement('span');
-      ribbon.className = 'project-status-ribbon';
-      ribbon.textContent = 'WIP';
-      ribbon.title = 'Work in progress';
-      element.appendChild(ribbon);
+      const statusPill = document.createElement('span');
+      statusPill.className = 'project-status-pill';
+      statusPill.textContent = 'Work in Progress';
+      statusPill.title = 'Work in Progress';
+      element.appendChild(statusPill);
     });
   }
 

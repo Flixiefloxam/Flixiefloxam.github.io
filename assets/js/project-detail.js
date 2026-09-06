@@ -31,8 +31,8 @@
   const imageCredit = project.imageCredit
     ? `<p class="project-image-credit">${project.imageCredit}</p>`
     : '';
-  const statusRibbon = project.wip
-    ? '<span class="project-status-ribbon" title="Work in progress">WIP</span>'
+  const statusPill = project.wip
+    ? '<span class="project-status-pill" title="Work in Progress">Work in Progress</span>'
     : '';
 
   const links = (project.links || [])
@@ -134,7 +134,7 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
         </div>
-        ${statusRibbon}
+        ${statusPill}
       </div>
       <div class="project-detail__video-caption">
         <span>${trailerLabel}</span>
@@ -260,7 +260,7 @@
       <div class="project-detail__media" data-reveal>
         <div class="project-cover">
           <img class="project-detail__hero${project.heroDisplay === 'contain' ? ' project-detail__hero--contain' : ''}" src="${project.image}" alt="Project artwork for ${project.title}" referrerpolicy="no-referrer">
-          ${statusRibbon}
+          ${statusPill}
         </div>
         ${imageCredit}
       </div>

@@ -14,15 +14,15 @@
     const items = projects.filter((project) => project.category === category);
 
     container.innerHTML = items.map((project, index) => {
-      const statusRibbon = project.wip
-        ? '<span class="project-status-ribbon" title="Work in progress">WIP</span>'
+      const statusPill = project.wip
+        ? '<span class="project-status-pill" title="Work in Progress">Work in Progress</span>'
         : '';
 
       return `
       <article class="project-row ${index % 2 ? 'project-row--reverse' : ''}" data-reveal>
         <a class="project-row__media" href="../project/?id=${encodeURIComponent(project.id)}" aria-label="Read more about ${escapeHtml(project.title)}">
           <img src="${escapeHtml(project.image)}" alt="Project artwork for ${escapeHtml(project.title)}" loading="lazy" referrerpolicy="no-referrer">
-          ${statusRibbon}
+          ${statusPill}
         </a>
         <div class="project-row__content">
           <p class="eyebrow">${escapeHtml(project.role)}${project.year ? ` <span aria-hidden="true">/</span> ${escapeHtml(project.year)}` : ''}</p>
