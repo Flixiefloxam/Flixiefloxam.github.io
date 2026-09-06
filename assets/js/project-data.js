@@ -142,12 +142,11 @@ window.PORTFOLIO_PROJECTS = [
       description: 'See the current work-in-progress build of Neon Swarm in action.'
     },
     pageBackground: {
-      src: '../assets/images/project-neon-swarm-page-tile.png',
-      position: 'left top',
-      size: '128px 128px',
-      repeat: 'repeat',
-      attachment: 'fixed',
-      overlay: 0.10
+      src: '../assets/images/project-neon-swarm-page-background.png',
+      position: 'center center',
+      size: 'cover',
+      repeat: 'no-repeat',
+      attachment: 'fixed'
     },
     summary: 'A solo-developed action game built in Godot and C#, featuring large enemy swarms, modular combat systems, weapons, pickups, upgrades and effects-driven player feedback.',
     overview: 'Neon Swarm is a solo-developed 2D action roguelike game built in Godot with C#. I structured the codebase around modular and data driven player, enemy, weapon, spawning, pickup, upgrade, UI and visual-effects systems, allowing features to be developed, balanced and extended easily.',
