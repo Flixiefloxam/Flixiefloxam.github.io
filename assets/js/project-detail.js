@@ -46,6 +46,26 @@
     })
     .join('');
 
+  const keyFiles = project.keyFiles?.items?.length
+    ? `
+      <div class="project-key-files">
+        <h3>${project.keyFiles.title || "Key files that I'm particularly proud of"}</h3>
+        <div class="project-key-files__grid">
+          ${project.keyFiles.items.map((item) => `
+            <article class="project-key-file">
+              <h4>${item.title}</h4>
+              <p>${item.description}</p>
+              <div class="project-key-file__paths">
+                ${(item.paths || []).map((path) => `
+                  <a class="project-key-file__path" href="${path.url}" target="_blank" rel="noreferrer noopener" data-project-repo="${project.title}">
+                    <span>${path.label}</span><span aria-hidden="true">↗</span>
+                  </a>`).join('')}
+              </div>
+            </article>`).join('')}
+        </div>
+      </div>`
+    : '';
+
   const hasTrailer = Boolean(project.trailer?.youtubeId);
   const trailerLabel = project.trailer?.sectionTitle || 'Official trailer';
   const technologies = project.technologies || project.tech || [];
@@ -330,13 +350,22 @@
 
     ${gallery}
 
-    ${links ? `
-    <section class="project-cta${project.compactDetailSections ? ' project-cta--compact' : ''} section-shell" data-reveal>
-      <div>
-        <p class="section-kicker">Explore</p>
-        <h2>Explore the implementation.</h2>
-      </div>
-      <div class="button-row">${links}</div>
+    ${links || keyFiles ? `
+    <section class="project-cta${project.compactDetailSections ? ' project-cta--compact' : ''}${keyFiles ? ' project-cta--key-files' : ''} section-shell" data-reveal>
+      ${keyFiles ? `
+        <div class="project-cta__top">
+          <div>
+            <p class="section-kicker">Explore</p>
+            <h2>Explore the implementation.</h2>
+          </div>
+          ${links ? `<div class="button-row">${links}</div>` : ''}
+        </div>
+        ${keyFiles}` : `
+        <div>
+          <p class="section-kicker">Explore</p>
+          <h2>Explore the implementation.</h2>
+        </div>
+        <div class="button-row">${links}</div>`}
     </section>` : ''}
   `;
 

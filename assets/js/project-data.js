@@ -181,6 +181,33 @@ window.PORTFOLIO_PROJECTS = [
       '<strong>Responsive game feel:</strong> UI and visual-effects systems provide clear combat feedback while reinforcing the neon presentation.'
     ],
     tech: ['Godot', 'C#', 'Gameplay Systems'],
+    keyFiles: {
+      title: "Key files that I'm particularly proud of",
+      items: [
+        {
+          title: 'Enemy Crowd Manager',
+          description: 'A custom lightweight iterative vector solver for large enemy swarms, resolving movement, knockback, pushing and collision responses without the simulation cost of full rigid-body physics.',
+          paths: [
+            { label: 'Scripts/Enemies/EnemyCrowdManager.cs', url: 'https://github.com/Flixiefloxam/Neon-Swarm/blob/main/Scripts/Enemies/EnemyCrowdManager.cs' }
+          ]
+        },
+        {
+          title: 'Data-Driven Upgrade Architecture',
+          description: 'A scalable resource-driven system for weighted upgrade selection, stacking and composable stat effects, allowing new upgrades to be added without modifying core gameplay code.',
+          paths: [
+            { label: 'Scripts/Upgrades/UpgradeManager.cs', url: 'https://github.com/Flixiefloxam/Neon-Swarm/blob/main/Scripts/Upgrades/UpgradeManager.cs' },
+            { label: 'Scripts/Upgrades', url: 'https://github.com/Flixiefloxam/Neon-Swarm/tree/main/Scripts/Upgrades' }
+          ]
+        },
+        {
+          title: 'Dynamic Enemy Spawning',
+          description: 'A mathematically scaled spawn controller using weighted probabilities and accumulator-based scheduling to increase swarm density over time with dynamic population limits and distance-based despawning.',
+          paths: [
+            { label: 'Scripts/Spawners/EnemySpawner.cs', url: 'https://github.com/Flixiefloxam/Neon-Swarm/blob/main/Scripts/Spawners/EnemySpawner.cs' }
+          ]
+        }
+      ]
+    },
     links: [{ label: 'View source code', url: 'https://github.com/Flixiefloxam/Neon-Swarm' }]
   },
   {
