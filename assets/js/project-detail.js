@@ -103,9 +103,6 @@
   const orderedMeta = orderedMetaItems.join('');
   const metaCount = orderedMetaItems.length;
 
-  const publisherTitleLogo = project.publisherLogo?.src
-    ? `<img class="project-title-lockup__publisher-logo" src="${project.publisherLogo.src}" alt="${project.publisherLogo.alt || project.publisher || 'Publisher logo'}" loading="eager" referrerpolicy="no-referrer">`
-    : '';
   const trailerMedia = hasTrailer
     ? `
       <div class="project-detail__video-frame">
@@ -261,10 +258,7 @@
 
       <div class="project-detail__intro project-detail__intro--video" data-reveal>
         <p class="eyebrow">${project.categoryLabel}${project.year ? ` <span aria-hidden="true">/</span> ${project.year}` : ''}</p>
-        <div class="project-title-lockup${publisherTitleLogo ? ' project-title-lockup--with-publisher' : ''}">
-          <h1>${project.title}</h1>
-          ${publisherTitleLogo}
-        </div>
+        <h1>${project.title}</h1>
         <p class="project-detail__lede">${project.summary}</p>
         ${project.summaryNote ? `<p class="project-detail__lede project-detail__lede--note"><strong>${project.summaryNote}</strong></p>` : ''}
       </div>
