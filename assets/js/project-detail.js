@@ -120,6 +120,31 @@
   const orderedMeta = orderedMetaItems.join('');
   const metaCount = orderedMetaItems.length;
 
+  const renderMetaArea = (modifier = '') => {
+    const metaClass = `project-detail__meta project-detail__meta--facts${modifier ? ` ${modifier}` : ''}`;
+    return `<div class="${metaClass}" style="--project-meta-count:${metaCount}" data-reveal>${orderedMeta}</div>`;
+  };
+
+  const itchDownloadSection = project.itchEmbed?.src
+    ? `
+      <section class="project-download section-shell section-shell--bordered" data-reveal>
+        <div class="project-download__intro">
+          <p class="section-kicker">Playable build</p>
+          <h2>Play the current build.</h2>
+          <p>${project.itchEmbed.description || `Download the latest playable build of ${project.title} from itch.io.`}</p>
+          ${project.itchEmbed.pageUrl ? `<a class="project-download__link" href="${project.itchEmbed.pageUrl}" target="_blank" rel="noreferrer noopener">View on itch.io ↗</a>` : ''}
+        </div>
+        <div class="project-download__embed" aria-label="${project.itchEmbed.title || `Download ${project.title} on itch.io`}">
+          <iframe
+            src="${project.itchEmbed.src}"
+            title="${project.itchEmbed.title || `Download ${project.title} on itch.io`}"
+            width="${project.itchEmbed.width || 552}"
+            height="${project.itchEmbed.height || 167}"
+            frameborder="0">${project.itchEmbed.pageUrl ? `<a href="${project.itchEmbed.pageUrl}">${project.itchEmbed.linkLabel || project.title}</a>` : ''}</iframe>
+        </div>
+      </section>`
+    : '';
+
   const trailerMedia = hasTrailer
     ? `
       <div class="project-detail__video-frame">
@@ -264,9 +289,7 @@
         </div>
         ${imageCredit}
       </div>
-      <div class="project-detail__meta project-detail__meta--facts" style="--project-meta-count:${metaCount}" data-reveal>
-        ${orderedMeta}
-      </div>
+      ${renderMetaArea()}
     </header>`;
 
   const videoHeader = `
@@ -284,9 +307,7 @@
         ${trailerMedia}
       </div>
 
-      <div class="project-detail__meta project-detail__meta--video project-detail__meta--facts" style="--project-meta-count:${metaCount}" data-reveal>
-        ${orderedMeta}
-      </div>
+      ${renderMetaArea('project-detail__meta--video')}
     </header>`;
 
   root.innerHTML = `
@@ -349,6 +370,8 @@
     ${storyAfterFeatures}
 
     ${gallery}
+
+    ${itchDownloadSection}
 
     ${links || keyFiles ? `
     <section class="project-cta${project.compactDetailSections ? ' project-cta--compact' : ''}${keyFiles ? ' project-cta--key-files' : ''} section-shell" data-reveal>

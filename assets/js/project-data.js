@@ -141,6 +141,15 @@ window.PORTFOLIO_PROJECTS = [
       sectionTitle: 'Gameplay trailer',
       description: 'See the current work-in-progress build of Neon Swarm in action.'
     },
+    itchEmbed: {
+      src: 'https://itch.io/embed/5000797?bg_color=0a0d13&fg_color=f1f5ff&link_color=4f8cff&border_color=252b36',
+      pageUrl: 'https://flixiefloxam.itch.io/neon-swarm',
+      linkLabel: 'Neon Swarm by Flixie',
+      title: 'Download Neon Swarm on itch.io',
+      description: 'Download the latest playable work-in-progress build directly from itch.io.',
+      width: 552,
+      height: 167
+    },
     pageBackground: {
       src: '../assets/images/project-neon-swarm-page-background.png',
       position: 'center center',

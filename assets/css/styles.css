@@ -1017,6 +1017,62 @@ main { overflow: hidden; }
   line-height: var(--project-copy-line);
 }
 
+/* Optional playable-build section. It is only rendered for projects that
+   define an itch.io embed in project-data.js. */
+.project-download {
+  display: grid;
+  grid-template-columns: minmax(240px, .72fr) minmax(0, 1.28fr);
+  gap: clamp(2.5rem, 7vw, 6rem);
+  align-items: center;
+}
+.section-shell.project-download {
+  padding-top: 3.15rem;
+  padding-bottom: 3.15rem;
+}
+.project-download__intro h2 {
+  margin-bottom: .9rem;
+}
+.project-download__intro > p:not(.section-kicker) {
+  max-width: 34rem;
+  margin: 0 0 1.15rem;
+  color: var(--project-copy);
+  font-size: var(--project-copy-size);
+  line-height: var(--project-copy-line);
+}
+.project-download__link {
+  display: inline-flex;
+  align-items: center;
+  color: var(--accent);
+  font-size: .82rem;
+  font-weight: 850;
+  letter-spacing: .045em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+.project-download__link:hover { color: var(--text); }
+.project-download__embed {
+  justify-self: end;
+  width: min(100%, 552px);
+  padding: .8rem;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,.09);
+  border-radius: 20px;
+  background:
+    linear-gradient(145deg, rgba(255,255,255,.05), rgba(255,255,255,.015)),
+    rgba(10,13,19,.62);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.035), var(--shadow);
+  -webkit-backdrop-filter: blur(8px);
+  backdrop-filter: blur(8px);
+}
+.project-download__embed iframe {
+  display: block;
+  width: 100%;
+  height: 167px;
+  border: 0;
+  border-radius: 12px;
+  background: #0a0d13;
+}
+
 .project-cta { display: flex; align-items: end; justify-content: space-between; gap: 3rem; }
 .project-cta--compact {
   padding-top: 3.75rem;
@@ -1231,12 +1287,19 @@ main { overflow: hidden; }
   .project-detail__meta--facts > div:nth-child(n + 4) {
     border-top: 1px solid rgba(255,255,255,.075);
   }
-  .project-detail__header--video .project-detail__meta--video {
+  .project-detail__header--video > .project-detail__meta--video {
     order: 3;
     width: 100%;
   }
   .project-detail__header:not(.project-detail__header--video) .project-detail__meta--facts {
     order: 3;
+  }
+  .project-download {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+  .project-download__embed {
+    justify-self: stretch;
   }
   .project-cta { align-items: flex-start; flex-direction: column; }
   .project-cta--key-files { display: grid; }
@@ -1354,6 +1417,17 @@ main { overflow: hidden; }
     flex-direction: column;
     gap: .35rem;
   }
+  .project-download { gap: 1.4rem; }
+  .section-shell.project-download {
+    padding-top: 2.75rem;
+    padding-bottom: 2.75rem;
+  }
+  .project-download__intro h2 { margin-bottom: .75rem; }
+  .project-download__embed {
+    padding: .55rem;
+    border-radius: 16px;
+  }
+  .project-download__embed iframe { border-radius: 10px; }
   .section-shell { padding: 4rem 0; }
   .project-cta--compact {
     padding-top: 3rem;
