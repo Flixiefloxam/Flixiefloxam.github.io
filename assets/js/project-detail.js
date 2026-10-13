@@ -169,7 +169,7 @@
 
   const gallery = project.gallery?.length
     ? `
-      <section class="project-gallery${project.compactGallery ? ' project-gallery--compact' : ''} section-shell" data-reveal>
+      <section class="project-gallery${project.compactGallery ? ' project-gallery--compact' : ''} project-gallery--count-${project.gallery.length} section-shell" data-reveal>
         <div class="project-gallery__heading">
           <p class="section-kicker">Gallery</p>
           <h2>Inside the game</h2>
@@ -180,7 +180,7 @@
               <a href="${item.src}" target="_blank" rel="noreferrer noopener" aria-label="Open full-size image: ${item.alt}">
                 <img src="${item.src}" alt="${item.alt}" loading="lazy" referrerpolicy="no-referrer">
               </a>
-              <figcaption>${item.caption}</figcaption>
+              ${item.caption ? `<figcaption>${item.caption}</figcaption>` : ''}
             </figure>`).join('')}
         </div>
         ${project.galleryCredit ? `<p class="project-gallery__credit">${project.gallerySource ? `<a href="${project.gallerySource}" target="_blank" rel="noreferrer noopener">${project.galleryCredit} ↗</a>` : project.galleryCredit}</p>` : ''}
@@ -202,6 +202,33 @@
     : (project.keyFeatures || project.contributions || []);
   const featureKicker = isProfessionalProject ? 'Contribution' : 'Highlights';
   const featureHeading = isProfessionalProject ? 'What I worked on' : 'Key Features';
+  const featureSection = featureItems.length
+    ? (project.compactDetailSections ? `
+    <section class="project-story project-story--features${project.sectionVisuals?.contribution?.src ? '' : ' project-story--no-visual'} section-shell section-shell--bordered" data-reveal>
+      <div class="project-story__heading">
+        <p class="section-kicker">${featureKicker}</p>
+        <h2>${featureHeading}</h2>
+      </div>
+      <ul class="contribution-list project-story__contributions">
+        ${featureItems.map((item) => `<li>${item}</li>`).join('')}
+      </ul>
+      ${project.sectionVisuals?.contribution?.src ? `
+        <figure class="project-story__visual project-story__visual--features">
+          <img src="${project.sectionVisuals.contribution.src}" alt="${project.sectionVisuals.contribution.alt || ''}" loading="lazy" referrerpolicy="no-referrer">
+          ${project.sectionVisuals.contribution.caption ? `<figcaption>${project.sectionVisuals.contribution.caption}</figcaption>` : ''}
+        </figure>` : ''}
+    </section>` : `
+    <section class="detail-grid${contributionVisual ? ' detail-grid--illustrated' : ''} section-shell section-shell--bordered">
+      <div data-reveal>
+        <p class="section-kicker">${featureKicker}</p>
+        <h2>${featureHeading}</h2>
+        ${contributionVisual}
+      </div>
+      <ul class="contribution-list" data-reveal>
+        ${featureItems.map((item) => `<li>${item}</li>`).join('')}
+      </ul>
+    </section>`)
+    : '';
 
   const storySection = (section) => {
     const hasBody = (section?.body || []).length > 0;
@@ -341,31 +368,7 @@
 
     ${storyBeforeFeatures}
 
-    ${project.compactDetailSections ? `
-    <section class="project-story project-story--features${project.sectionVisuals?.contribution?.src ? '' : ' project-story--no-visual'} section-shell section-shell--bordered" data-reveal>
-      <div class="project-story__heading">
-        <p class="section-kicker">${featureKicker}</p>
-        <h2>${featureHeading}</h2>
-      </div>
-      <ul class="contribution-list project-story__contributions">
-        ${featureItems.map((item) => `<li>${item}</li>`).join('')}
-      </ul>
-      ${project.sectionVisuals?.contribution?.src ? `
-        <figure class="project-story__visual project-story__visual--features">
-          <img src="${project.sectionVisuals.contribution.src}" alt="${project.sectionVisuals.contribution.alt || ''}" loading="lazy" referrerpolicy="no-referrer">
-          ${project.sectionVisuals.contribution.caption ? `<figcaption>${project.sectionVisuals.contribution.caption}</figcaption>` : ''}
-        </figure>` : ''}
-    </section>` : `
-    <section class="detail-grid${contributionVisual ? ' detail-grid--illustrated' : ''} section-shell section-shell--bordered">
-      <div data-reveal>
-        <p class="section-kicker">${featureKicker}</p>
-        <h2>${featureHeading}</h2>
-        ${contributionVisual}
-      </div>
-      <ul class="contribution-list" data-reveal>
-        ${featureItems.map((item) => `<li>${item}</li>`).join('')}
-      </ul>
-    </section>`}
+    ${featureSection}
 
     ${storyAfterFeatures}
 

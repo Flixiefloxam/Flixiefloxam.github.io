@@ -220,6 +220,52 @@ window.PORTFOLIO_PROJECTS = [
     links: [{ label: 'View source code', url: 'https://github.com/Flixiefloxam/Neon-Swarm' }]
   },
   {
+    id: 'block-game',
+    compactDetailSections: true,
+    compactGallery: true,
+    category: 'personal-games',
+    categoryLabel: 'Personal Game',
+    title: 'Block Game',
+    wip: true,
+    role: 'Creator/Rendering Engine Programmer',
+    technologies: ['Godot', 'C#'],
+    technologyLogos: {
+      'Godot': {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/godot/godot-original.svg',
+        alt: 'Godot'
+      },
+      'C#': {
+        src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/csharp/csharp-original.svg',
+        alt: 'C#'
+      }
+    },
+    focus: 'Meshing System, Chunk Streaming',
+    year: '',
+    image: '../assets/images/project-block-game-cover.png',
+    pageBackground: {
+      src: '../assets/images/project-block-game-screenshot-1.png',
+      position: 'center center'
+    },
+    summary: 'A team-developed open-world sandbox game built in Godot and C#, featuring optimised rendering systems, massive render distances and streamlined performance.',
+    overview: 'Block Game is a group-developed 3D sandbox game built in Godot with C#.',
+    storySections: [],
+    keyFeatures: [],
+    gallery: [
+      {
+        src: '../assets/images/project-block-game-screenshot-1.png',
+        alt: 'Block Game screenshot 1',
+        caption: ''
+      },
+      {
+        src: '../assets/images/project-block-game-screenshot-2.png',
+        alt: 'Block Game screenshot 2',
+        caption: ''
+      }
+    ],
+    tech: ['C#', 'Godot'],
+    links: []
+  },
+  {
     id: 'ai-level-platformer',
     compactDetailSections: true,
     category: 'personal-projects',

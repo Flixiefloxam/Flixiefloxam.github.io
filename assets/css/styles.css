@@ -1674,7 +1674,7 @@ main { overflow: hidden; }
 .project-gallery__item--feature { grid-row: 1 / span 2; min-height: 516px; }
 .project-gallery--compact .project-gallery__heading { margin-bottom: 1.45rem; }
 .project-gallery--compact .project-gallery__grid {
-  grid-template-columns: repeat(3, minmax(0,1fr));
+  grid-template-columns: repeat(auto-fit, minmax(260px,1fr));
   grid-template-rows: 215px;
 }
 .project-gallery--compact .project-gallery__item,
@@ -1994,4 +1994,15 @@ main { overflow: hidden; }
   .about-qa { padding-top: 4rem; padding-bottom: 4rem; }
   .about-qa__heading { margin-bottom: 1.75rem; }
   .about-qa__grid { grid-template-columns: 1fr; }
+}
+
+/* Keep compact two-image galleries balanced at tablet widths instead of
+   reserving an empty third/gallery slot. */
+@media (min-width: 521px) and (max-width: 1000px) {
+  .project-gallery--compact.project-gallery--count-2 .project-gallery__grid {
+    grid-template-rows: 215px;
+  }
+  .project-gallery--compact.project-gallery--count-2 .project-gallery__item:first-child {
+    grid-column: auto;
+  }
 }
