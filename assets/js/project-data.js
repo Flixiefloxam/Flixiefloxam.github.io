@@ -242,6 +242,15 @@ window.PORTFOLIO_PROJECTS = [
     focus: 'Meshing System, Chunk Streaming',
     year: '',
     image: '../assets/images/project-block-game-cover.png',
+    itchEmbed: {
+      src: 'https://itch.io/embed/5334694?bg_color=0a0d13&fg_color=f1f5ff&link_color=4f8cff&border_color=252b36',
+      pageUrl: 'https://flixiefloxam.itch.io/block-game',
+      linkLabel: 'Block Game by Flixie',
+      title: 'Download Block Game on itch.io',
+      description: 'Download the latest playable work-in-progress build directly from itch.io.',
+      width: 552,
+      height: 167
+    },
     pageBackground: {
       src: '../assets/images/project-block-game-screenshot-1.png',
       position: 'center center'
